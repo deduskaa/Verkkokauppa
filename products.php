@@ -50,10 +50,13 @@ require_once('login.php');
 		<?php else: ?>
 		<li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
 		<?php endif;?>
-		<span class="snipcart-summary">
-			Number of items: <span class="snipcart-total-items"></span>
-			Total price: <span class="snipcart-total-price"></span>
-		</span>
+		<li><a href="#" class="snipcart-checkout">Checkout</a></li>
+		<li>
+			<span class="snipcart-summary">
+				<p>Number of items: <span class="snipcart-total-items"></span><br />
+				Total price: <span class="snipcart-total-price"></span></p>
+			</span>
+		</li>
       </ul>
 		<div id="modal" class="popupContainer" style="display:none;">
 			<header class="popupHeader">
@@ -133,23 +136,12 @@ require_once('login.php');
       <div class="container">
         <h1>Pokemondeals</h1>
         <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
-        <a href="#">Learn More</a>
       </div>
     </div>
     <div class="neighborhood-guides">
         <div class="container">
             <h2>Products</h2>
             <p>Our extensive catalog where you'll find everything you need</p>
-            <a href="#"
-			class="snipcart-add-item"
-			data-item-id="2"
-			data-item-name="Bacon"
-			data-item-price="3.00"
-			data-item-weight="20"
-			data-item-url="http://myapp.com/products/bacon"
-			data-item-description="Some fresh bacon">
-			Buy bacon
-			</a>
 			<div class="row">
 			
 			  <div class="col-sm-6 col-md-4">
@@ -158,6 +150,7 @@ require_once('login.php');
 				  <div class="caption">
 					<h3>Bulbasaur</h3>
 					<p>Bulbasaurness</p>
+					<p id='hinta'>39,90 €</p>
 					<p><a href="#" class="snipcart-add-item btn btn-default"
 							data-item-id="3"
 							data-item-name="Bulbasaur"
@@ -176,6 +169,7 @@ require_once('login.php');
 				  <div class="caption">
 					<h3>Squirtle</h3>
 					<p>SquirtSquirt</p>
+					<p id='hinta'>59,90 €</p>
 					<p><a href="#" class="snipcart-add-item btn btn-default"
 							data-item-id="4"
 							data-item-name="Squirtle"
@@ -194,6 +188,7 @@ require_once('login.php');
 				  <div class="caption">
 					<h3>Charmander</h3>
 					<p>Pruutpruut</p>
+					<p id='hinta'>49,90 €</p>
 					<p><a href="#" class="snipcart-add-item btn btn-default"
 							data-item-id="5"
 							data-item-name="Charmander"

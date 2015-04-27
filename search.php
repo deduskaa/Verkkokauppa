@@ -4,25 +4,15 @@ require_once('yhteiset/funktiot.php');
 require_once('yhteiset/dbFunctions.php');
 ?>
 <?php
-if(isset($_POST['submit'])){
+if(isset($_POST['searchText'])){
 	if(isset($_GET['go'])){
-		if(preg_match("^/[A-Za-z]+/", $_POST['name'])){ 
+		if(preg_match("^/[A-Za-z]+/", $_POST['searchText'])){ 
 			$name=$_POST['searchText']; 
+		}else{
+			"<p>Search for something!</p>";
 		}
 		$sql="
-		SELECT 
-		Pokemon.Nimi,
-		Tyyppi.Tyyppi,
-		Sukupuoli.Sukupuoli,
-		Hinta.Hinta,
-		Kuva.URL
-		FROM
-		Pokemon,
-		Tyyppi,
-		Sukupuoli,
-		Hinta,
-		Kuva,
-		PokemonKuva
+		SELECT*FROM Pokemon
 		WHERE
 		Tyyppi.ID = Pokemon.Tyyppi1 AND 
 		Hinta.ID = Pokemon.Hinta AND
@@ -32,16 +22,15 @@ if(isset($_POST['submit'])){
 		PokemonKuva.PokemonID = Pokemon.ID;"; 
 		//-run  the query against the mysql query function 
 		$result=mysql_query($sql);
-		echo($result);
-		while($row=mysql_fetch_array($result)){ 
+		while($row=mysql_fetch_array($result)){
+			echo $result['Pokemon.Nimi'];
 			$name=$row['submit'];  
 			//-display the result of the array 
 			echo "<ul>\n"; 
 			echo "<li>".$name."</a></li>\n"; 
 			echo "</ul>"; 
-		} 
-	}else{
-	"<p>Search for something!</p>";
+		}
+		
 	}
 }
 

@@ -135,7 +135,6 @@ require_once('login.php');
       <div class="container">
         <h1>Pokemondeals</h1>
         <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
-        <a href="#">Learn More</a>
       </div>
     </div>
     <div class="neighborhood-guides">
