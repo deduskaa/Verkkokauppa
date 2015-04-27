@@ -31,13 +31,13 @@ require_once('../yhteiset/dbYhteys.php');
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">Pokemondeals</a>
+      <a class="navbar-brand" href="../index.php">Pokemondeals</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="products.php">Products</a></li>
+        <li><a href="../products.php">Products</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -177,28 +177,59 @@ WHERE
 			</div>
 				</div>
 			  </div>
-			  
+			   <div class="neighborhood-guides">
+			<div class="container"> 
 			  <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+			
+				  <div class="caption">
+					
+										<p>
+					</p>
+				  </div>
+				</div>
+			  </div>
+			   <div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
 				  <img src="<?php echo $row['URL']; ?>" alt="kuva">
 				  <div class="caption">
 					<h3><?php echo $row['Nimi']; ?></h3>
 					<p><?php echo $row['Kuvaus']; ?></p>
+					
+				  </div>
+				</div>
+			  </div>
+			  			  <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				 
+				  <div class="caption">
+					
+					
+					<p>
+							
+							<h2>Tyyppi1: <?php echo $row['Tyyppi']; ?></h2>
+							<h2>Tyyppi2: <?php echo $row['Tyyppi']; ?></h2>
+							<h2>Sukupuoli: <?php echo $row['Sukupuoli'] ?></h2>
+					</p>
+					
+					<h1> <?php echo $row['Hinta']; ?> € </h1>
 					<p><a href="#" class="snipcart-add-item btn btn-default"
 							data-item-id="5"
 							data-item-name="<?php echo $row['Nimi']; ?>"
 							data-item-price="<?php echo $row['Hinta']; ?>"
 							data-item-url="<?php echo $row['SivuUrl']; ?>"
 							data-item-description="<?php echo $row['Kuvaus']; ?>"
-							role="button">Buy</a>
+							role="button">Osta</a>
 					</p>
 				  </div>
 				</div>
 			  </div>
-			  
 			</div>
         </div>
     </div>
+</div>
+</div>
+
 
     <div class="learn-more">
 	  <div class="container">
