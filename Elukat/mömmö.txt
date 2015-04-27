@@ -1,0 +1,32 @@
+
+$sql = "SELECT 
+	Pokemon.Nimi,
+	Sukupuoli.Sukupuoli,
+	Hinta.Hinta,
+	Pokemon.SivuUrl,
+	Pokemon.Kuvaus,
+	Kuva.URL,
+	Tyyppi.Tyyppi
+FROM
+	Pokemon,
+	Tyyppi,
+	PokemonTyyppi,
+	Sukupuoli,
+	Hinta,
+	Kuva,
+	PokemonKuva
+WHERE
+	Hinta.ID = Pokemon.Hinta AND
+	Sukupuoli.ID = Pokemon.Sukupuoli AND
+	Pokemon.Nimi = \"Charizard\" AND
+	Kuva.ID = PokemonKuva.KuvaID AND
+	PokemonKuva.PokemonID = Pokemon.ID AND
+	Pokemon.ID=PokemonTyyppi.PokemonID AND
+	Tyyppi.ID=PokemonTyyppi.TyyppiID; ";
+	
+	
+	
+	  <img src="<?php echo $row['URL']; ?>" alt="kuva">
+				  <div class="caption">
+					<h3><?php echo $row['Nimi']; ?></h3>
+					<p><?php echo $row['Kuvaus']; ?></p>
