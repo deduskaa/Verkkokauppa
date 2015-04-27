@@ -6,7 +6,7 @@ require_once('login.php');
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unicornland | Welcome</title>
+    <title>Pokemondeals | Welcome</title>
 	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
 	<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
 	<link rel="stylesheet" href="css/main.css">
@@ -14,13 +14,9 @@ require_once('login.php');
 	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
 	<link type="text/css" rel="stylesheet" href="css/loginbox.css" />
-	<script type="text/javascript"
-    id="snipcart"
-    src="https://app.snipcart.com/scripts/snipcart.js"
+	<script type="text/javascript" id="snipcart" src="https://app.snipcart.com/scripts/snipcart.js"
     data-api-key="ZTIyNzAwMTYtOThjZC00NDcxLThlYjYtOGVmNmYzYjIwMTk5"></script>
-	<link id="snipcart-theme" type="text/css"
-    href="https://app.snipcart.com/themes/base/snipcart.css"
-    rel="stylesheet">
+	<link id="snipcart-theme" type="text/css" href="https://app.snipcart.com/themes/base/snipcart.css" rel="stylesheet">
   </head>
   
   <body>
@@ -34,17 +30,17 @@ require_once('login.php');
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">Brand</a>
+      <a class="navbar-brand" href="index.php">Pokemondeals</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="products.php">Pokemon</a></li>
+        <li><a href="products.php">Products</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search" action="search.php">
         <div class="form-group">
-          <input type="text" class="form-control" size="50" placeholder="Search">
+          <input type="text" class="form-control" size="100" placeholder="Search by name or type">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
@@ -54,10 +50,12 @@ require_once('login.php');
 			  <?php else: ?>
 			  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
 			  <?php endif;?>
-			  <span class="snipcart-summary">
-    Number of items: <span class="snipcart-total-items"></span>
-    Total price: <span class="snipcart-total-price"></span>
-</span>
+			  <li><a href="#" class="snipcart-checkout">Checkout</a></li>
+			  <li><span class="snipcart-summary">
+			  <p>Number of items: <span class="snipcart-total-items"></span><br />
+			  Total price: <span class="snipcart-total-price"></span></p>
+			  </span></li>
+			  
       </ul>
 		<div id="modal" class="popupContainer" style="display:none;">
 			<header class="popupHeader">
@@ -135,7 +133,7 @@ require_once('login.php');
 
     <div class="jumbotron">
       <div class="container">
-        <h1>Unicornland</h1>
+        <h1>Pokemondeals</h1>
         <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
         <a href="#">Learn More</a>
       </div>

@@ -6,7 +6,7 @@ require_once('login.php');
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unicornland | Welcome</title>
+    <title>Pokemondeals</title>
 	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
 	<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
 	<link rel="stylesheet" href="css/main.css">
@@ -30,13 +30,13 @@ require_once('login.php');
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">Brand</a>
+      <a class="navbar-brand" href="index.php">Pokemondeals</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="products.php">Pokemon</a></li>
+        <li><a href="products.php">Products</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -131,7 +131,7 @@ require_once('login.php');
 
     <div class="jumbotron">
       <div class="container">
-        <h1>Unicornland</h1>
+        <h1>Pokemondeals</h1>
         <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
         <a href="#">Learn More</a>
       </div>
@@ -151,26 +151,62 @@ require_once('login.php');
 			Buy bacon
 			</a>
 			<div class="row">
+			
 			  <div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
 				  <img src="http://cdn.bulbagarden.net/upload/thumb/2/21/001Bulbasaur.png/240px-001Bulbasaur.png" alt="bulbasaur">
 				  <div class="caption">
 					<h3>Bulbasaur</h3>
 					<p>Bulbasaurness</p>
-					<p><a href="#" class="btn btn-default" role="button">Buy</a></p>
+					<p><a href="#" class="snipcart-add-item btn btn-default"
+							data-item-id="3"
+							data-item-name="Bulbasaur"
+							data-item-price="39.90"
+							data-item-weight="20"
+							data-item-url="http://myapp.com/products/bacon"
+							data-item-description="Bulbasaur is a grass pokemon"
+							role="button">Buy</a></p>
 				  </div>
 				</div>
 			  </div>
+			  
 			  <div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
-				  <img src="http://cdn.bulbagarden.net/upload/thumb/3/39/007Squirtle.png/240px-007Squirtle.png" alt="bulbasaur">
+				  <img src="http://cdn.bulbagarden.net/upload/thumb/3/39/007Squirtle.png/240px-007Squirtle.png" alt="squirtle">
 				  <div class="caption">
 					<h3>Squirtle</h3>
 					<p>SquirtSquirt</p>
-					<p><a href="#" class="btn btn-default" role="button">Buy</a></p>
+					<p><a href="#" class="snipcart-add-item btn btn-default"
+							data-item-id="4"
+							data-item-name="Squirtle"
+							data-item-price="59.90"
+							data-item-weight="20"
+							data-item-url="http://myapp.com/products/bacon"
+							data-item-description="Squirtle is a water pokemon"
+							role="button">Buy</a></p>
 				  </div>
 				</div>
 			  </div>
+			  
+			  <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				  <img src="http://cdn.bulbagarden.net/upload/thumb/7/73/004Charmander.png/240px-004Charmander.png" alt="charmander">
+				  <div class="caption">
+					<h3>Charmander</h3>
+					<p>Pruutpruut</p>
+					<p><a href="#" class="snipcart-add-item btn btn-default"
+							data-item-id="5"
+							data-item-name="Charmander"
+							data-item-price="49.90"
+							data-item-weight="20"
+							data-item-url="http://myapp.com/products/bacon"
+							data-item-description="Charmander is a fire pokemon"
+							role="button">Buy</a>
+					</p>
+				  </div>
+				</div>
+			  </div>
+			  
 			</div>
         </div>
     </div>
