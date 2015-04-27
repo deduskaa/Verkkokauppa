@@ -161,7 +161,7 @@ FROM
 WHERE
 	Hinta.ID = Pokemon.Hinta AND
 	Sukupuoli.ID = Pokemon.Sukupuoli AND
-	Pokemon.Nimi = \"Bulbasaur\" AND
+	Pokemon.Nimi = \"Metapod\" AND
 	Kuva.ID = PokemonKuva.KuvaID AND
 	PokemonKuva.PokemonID = Pokemon.ID AND
 	Pokemon.ID=PokemonTyyppi.PokemonID AND

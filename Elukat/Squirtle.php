@@ -107,7 +107,7 @@ require_once('../yhteiset/dbYhteys.php');
 
 			<!-- Register Form -->
 				<div class="user_register">
-					<form method="POST" action="save.php">
+					<form method="POST" action="../save.php">
 						<label>Full Name</label>
 						<input type="text" name="fullName" /><br />
 						<label>Email Address</label>
@@ -161,7 +161,7 @@ FROM
 WHERE
 	Hinta.ID = Pokemon.Hinta AND
 	Sukupuoli.ID = Pokemon.Sukupuoli AND
-	Pokemon.Nimi = \"Bulbasaur\" AND
+	Pokemon.Nimi = \"Squirtle\" AND
 	Kuva.ID = PokemonKuva.KuvaID AND
 	PokemonKuva.PokemonID = Pokemon.ID AND
 	Pokemon.ID=PokemonTyyppi.PokemonID AND
