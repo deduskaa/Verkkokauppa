@@ -6,7 +6,7 @@ require_once('login.php');
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokemondeals | Welcome</title>
+    <title>Pokemondeals</title>
 	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
 	<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
 	<link rel="stylesheet" href="css/main.css">
@@ -38,24 +38,22 @@ require_once('login.php');
       <ul class="nav navbar-nav">
         <li><a href="products.php">Products</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search" action="search.php?go">
+      <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" size="100" name="searchText" placeholder="Search by name or type">
+          <input type="text" class="form-control" size="50" placeholder="Search">
         </div>
-        <button type="submit" name="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
 		<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
-			  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout">Logout</a></li>
-			  <?php else: ?>
-			  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
-			  <?php endif;?>
-			  <li><a href="#" class="snipcart-checkout">Checkout</a></li>
-			  <li><span class="snipcart-summary">
-			  <p>Number of items: <span class="snipcart-total-items"></span><br />
-			  Total price: <span class="snipcart-total-price"></span></p>
-			  </span></li>
-			  
+		<li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout">Logout</a></li>
+		<?php else: ?>
+		<li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
+		<?php endif;?>
+		<span class="snipcart-summary">
+			Number of items: <span class="snipcart-total-items"></span>
+			Total price: <span class="snipcart-total-price"></span>
+		</span>
       </ul>
 		<div id="modal" class="popupContainer" style="display:none;">
 			<header class="popupHeader">
@@ -140,8 +138,8 @@ require_once('login.php');
     </div>
     <div class="neighborhood-guides">
         <div class="container">
-            <h2>Popular Pokemons</h2>
-            <p>THE most popular pokemons that you will want to buy</p>
+            <h2>Products</h2>
+            <p>Our extensive catalog where you'll find everything you need</p>
             <a href="#"
 			class="snipcart-add-item"
 			data-item-id="2"
@@ -152,29 +150,33 @@ require_once('login.php');
 			data-item-description="Some fresh bacon">
 			Buy bacon
 			</a>
-            <div class="row">
-                <div class = "col-md-4">
-                    <div class = "thumbnail">
-                        <img src="http://i.ytimg.com/vi/Eghk9bVNN9M/maxresdefault.jpg">
-                    </div>
-                      <div class = "thumbnail">
-                        <img src="http://goo.gl/an2HXY">
-                    </div>
-                </div>
-                <div class = "col-md-4">
-                    <div class = "thumbnail">
-                        <img src="http://goo.gl/Av1pac">
-                    </div>
-                      <div class = "thumbnail">
-                        <img src="http://goo.gl/vw43v1">
-                    </div>
-                </div>
-                <div class = "col-md-4">
-                    <div class = "thumbnail">
-                        <img src="http://goo.gl/0Kd7UO">
-                    </div>
-                </div>
-            </div>
+			<div class="row">
+			
+			 
+			</div>
+				</div>
+			  </div>
+			  
+			  <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				  <img src="http://cdn.bulbagarden.net/upload/thumb/7/73/004Charmander.png/240px-004Charmander.png" alt="charmander">
+				  <div class="caption">
+					<h3>Charmander</h3>
+					<p>Pruutpruut</p>
+					<p><a href="#" class="snipcart-add-item btn btn-default"
+							data-item-id="5"
+							data-item-name="Charmander"
+							data-item-price="49.90"
+							data-item-weight="20"
+							data-item-url="http://myapp.com/products/bacon"
+							data-item-description="Charmander is a fire pokemon"
+							role="button">Buy</a>
+					</p>
+				  </div>
+				</div>
+			  </div>
+			  
+			</div>
         </div>
     </div>
 
