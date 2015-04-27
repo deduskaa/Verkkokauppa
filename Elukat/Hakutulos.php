@@ -1,23 +1,23 @@
 <?php 
-require_once('login.php');
+require_once('../login.php');
+require_once('../yhteiset/dbYhteys.php');
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokemondeals | Welcome</title>
+    <title>Pokemondeals</title>
 	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
 	<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
-	<link rel="stylesheet" href="css/main.css">
-	<script src="js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+	<link rel="stylesheet" href="../css/main.css">
+	<script src="../js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.leanModal.min.js"></script>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-	<link type="text/css" rel="stylesheet" href="css/loginbox.css" />
+	<link type="text/css" rel="stylesheet" href="../css/loginbox.css" />
 	<script type="text/javascript" id="snipcart" src="https://app.snipcart.com/scripts/snipcart.js"
     data-api-key="ZTIyNzAwMTYtOThjZC00NDcxLThlYjYtOGVmNmYzYjIwMTk5"></script>
 	<link id="snipcart-theme" type="text/css" href="https://app.snipcart.com/themes/base/snipcart.css" rel="stylesheet">
-	<script type="text/javascript" id="facebooklogin" src="js/facebooklogin.js"></script>
   </head>
   
   <body>
@@ -31,32 +31,30 @@ require_once('login.php');
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">Pokemondeals</a>
+      <a class="navbar-brand" href="../index.php">Pokemondeals</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="products.php">Products</a></li>
+        <li><a href="../products.php">Products</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search" action="Elukat/Hakutulos.php">
+      <form class="navbar-form navbar-left" role="search" action="Hakutulos.php">
         <div class="form-group">
           <input type="text" class="form-control" size="100" name="searchText" placeholder="Search by name or type">
         </div>
-        <button type="submit" name="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
 		<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
-			  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
-			  <?php else: ?>
-			  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
-			  <?php endif;?>
-			  <li><a href="#" class="snipcart-checkout">Checkout</a></li>
-			  <li><span class="snipcart-summary">
-			  <p>Number of items: <span class="snipcart-total-items"></span><br />
-			  Total price: <span class="snipcart-total-price"></span></p>
-			  </span></li>
-			  
+		<li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout">Logout</a></li>
+		<?php else: ?>
+		<li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
+		<?php endif;?>
+		<span class="snipcart-summary">
+			Number of items: <span class="snipcart-total-items"></span>
+			Total price: <span class="snipcart-total-price"></span>
+		</span>
       </ul>
 		<div id="modal" class="popupContainer" style="display:none;">
 			<header class="popupHeader">
@@ -66,8 +64,15 @@ require_once('login.php');
 			<section class="popupBody">
 			<!-- Social Login -->
 				<div class="social_login">
-					<div class="centeredText">
-						<div class="fb-login-button" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+					<div class="">
+						<a href="#" class="social_box fb">
+							<span class="icon"><i class="fa fa-facebook"></i></span>
+							<span class="icon_title">Connect with Facebook</span>
+						</a>
+						<a href="#" class="social_box google">
+							<span class="icon"><i class="fa fa-google-plus"></i></span>
+							<span class="icon_title">Connect with Google</span>
+						</a>
 					</div>
 
 					<div class="centeredText">
@@ -121,7 +126,7 @@ require_once('login.php');
 				</div>
 			</section>
 		</div>	
-		<script type="text/javascript" src="js/login.js"></script>	  
+		<script type="text/javascript" src="../js/login.js"></script>	  
     </div>
   </div>
 
@@ -129,82 +134,121 @@ require_once('login.php');
       <div class="container">
         <h1>Pokemondeals</h1>
         <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
+        <a href="#">Learn More</a>
       </div>
     </div>
     <div class="neighborhood-guides">
         <div class="container">
-            <h2>Popular Pokemons</h2>
-            <p>THE most popular pokemons that you will want to buy</p>
-            <a href="#"
-			class="snipcart-add-item"
-			data-item-id="2"
-			data-item-name="Bacon"
-			data-item-price="3.00"
-			data-item-weight="20"
-			data-item-url="http://myapp.com/products/bacon"
-			data-item-description="Some fresh bacon">
-			Buy bacon
-			</a>
-            <div class="row">
-                <div class = "col-md-4">
-                    <div class = "thumbnail">
-                        <img src="http://i.ytimg.com/vi/Eghk9bVNN9M/maxresdefault.jpg">
-                    </div>
-                      <div class = "thumbnail">
-                        <img src="http://goo.gl/an2HXY">
-                    </div>
-                </div>
-                <div class = "col-md-4">
-                    <div class = "thumbnail">
-                        <img src="http://goo.gl/Av1pac">
-                    </div>
-                      <div class = "thumbnail">
-                        <img src="http://goo.gl/vw43v1">
-                    </div>
-                </div>
-                <div class = "col-md-4">
-                    <div class = "thumbnail">
-                        <img src="http://goo.gl/0Kd7UO">
-                    </div>
-                </div>
-            </div>
+       			</br>
+<?php 
+$name = $_GET['searchText'];
+$sql = "SELECT 
+	Pokemon.Nimi,
+	Sukupuoli.Sukupuoli,
+	Hinta.Hinta,
+	Pokemon.SivuUrl,
+	Pokemon.Kuvaus,
+	Kuva.URL,
+	Tyyppi.Tyyppi
+FROM
+	Pokemon,
+	Tyyppi,
+	PokemonTyyppi,
+	Sukupuoli,
+	Hinta,
+	Kuva,
+	PokemonKuva
+WHERE
+	Hinta.ID = Pokemon.Hinta AND
+	Sukupuoli.ID = Pokemon.Sukupuoli AND
+	Pokemon.Nimi = \"$name\" AND
+	Kuva.ID = PokemonKuva.KuvaID AND
+	PokemonKuva.PokemonID = Pokemon.ID AND
+	Pokemon.ID=PokemonTyyppi.PokemonID AND
+	Tyyppi.ID=PokemonTyyppi.TyyppiID; ";
+		
+	$STH = @$DBH->query($sql);
+	$STH->setFetchMode(PDO::FETCH_ASSOC);
+	$row = $STH->fetch();
+?>
+	<div class="row">
+			</div>
+				</div>
+			  </div>
+			   <div class="neighborhood-guides">
+			<div class="container"> 
+			  <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+			
+				  <div class="caption">
+					
+										<p>
+					</p>
+				  </div>
+				</div>
+			  </div>
+			   <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				  <img src="<?php echo $row['URL']; ?>" alt="kuva">
+				  <div class="caption">
+					<h3><?php echo $row['Nimi']; ?></h3>
+					<p><?php echo $row['Kuvaus']; ?></p>
+					
+				  </div>
+				</div>
+			  </div>
+			  			  <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				 
+				  <div class="caption">
+					
+					
+					<p>
+							
+							<h2>Tyyppi1: <?php echo $row['Tyyppi']; ?></h2>
+							<h2>Tyyppi2: <?php echo $row['Tyyppi']; ?></h2>
+							<h2>Sukupuoli: <?php echo $row['Sukupuoli'] ?></h2>
+					</p>
+					
+					<h1> <?php echo $row['Hinta']; ?> € </h1>
+					<p><a href="#" class="snipcart-add-item btn btn-default"
+							data-item-id="5"
+							data-item-name="<?php echo $row['Nimi']; ?>"
+							data-item-price="<?php echo $row['Hinta']; ?>"
+							data-item-url="<?php echo $row['SivuUrl']; ?>"
+							data-item-description="<?php echo $row['Kuvaus']; ?>"
+							role="button">Osta</a>
+					</p>
+				  </div>
+				</div>
+			  </div>
+			</div>
         </div>
     </div>
-	
-	<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
-		<div class="container">
-			<div class="row">
-				<div class='col-md-4'>
-					<h1>Admin</h1>
-					<p>You don't have any rights</p>
-				</div>
-			</div>
-		</div>
-	<?php else: ?>
-		<div class="learn-more">
-		  <div class="container">
-			<div class="row">
-			  <div class="col-md-4">
-				<h3>About Us</h3>
-				<p>POKEMONDIILERS DIILING POKEMON FOR EVERYONE</p>			
-				<p><a href="#">Contact Us</a></p>
-			  </div>
-			  <div class="col-md-4">
-				<h3>Terms & Conditions</h3>
-				<p>You don't have any</p>
-				<p><a href="#">Don't read these</a></p>
-			  </div>
-			  <div class="col-md-4">
-				<h3>Trust and Safety</h3>
-				<p>We will steal all your money</p>
-				<p><a href="#">Why are you still here?</a></p>
-			  </div>
-			</div>
+</div>
+</div>
+
+
+    <div class="learn-more">
+	  <div class="container">
+		<div class="row">
+	      <div class="col-md-4">
+			<h3>About Us</h3>
+			<p>POKEMONDIILERS DIILING POKEMON FOR EVERYONE</p>			
+			<p><a href="#">Contact Us</a></p>
+	      </div>
+		  <div class="col-md-4">
+			<h3>Terms & Conditions</h3>
+			<p>You don't have any</p>
+			<p><a href="#">Don't read these</a></p>
 		  </div>
-		</div>
-	<?php endif;?>
-	
-
-
+		  <div class="col-md-4">
+			<h3>Trust and Safety</h3>
+			<p>We will steal all your money</p>
+			<p><a href="#">Why are you still here?</a></p>
+		  </div>
+	    </div>
+	  </div>
+	</div>
   </body>
 </html>
