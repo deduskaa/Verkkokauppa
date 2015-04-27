@@ -38,11 +38,11 @@ require_once('login.php');
       <ul class="nav navbar-nav">
         <li><a href="products.php">Products</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search" action="Elukat/Hakutulos.php">
         <div class="form-group">
-          <input type="text" class="form-control" size="50" placeholder="Search">
+          <input type="text" class="form-control" size="100" name="searchText" placeholder="Search by name or type">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" name="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
 		<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
@@ -140,6 +140,38 @@ require_once('login.php');
     </div>
     <div class="neighborhood-guides">
         <div class="container">
+		<?php 
+			$name = $_GET['searchText'];
+			$sql = "SELECT 
+				Pokemon.Nimi,
+				Sukupuoli.Sukupuoli,
+				Hinta.Hinta,
+				Pokemon.SivuUrl,
+				Pokemon.Kuvaus,
+				Kuva.URL,
+				Tyyppi.Tyyppi
+			FROM
+				Pokemon,
+				Tyyppi,
+				PokemonTyyppi,
+				Sukupuoli,
+				Hinta,
+				Kuva,
+				PokemonKuva
+			WHERE
+				Hinta.ID = Pokemon.Hinta AND
+				Sukupuoli.ID = Pokemon.Sukupuoli AND
+				Pokemon.Nimi = \"$name\" AND
+				Kuva.ID = PokemonKuva.KuvaID AND
+				PokemonKuva.PokemonID = Pokemon.ID AND
+				Pokemon.ID=PokemonTyyppi.PokemonID AND
+				Tyyppi.ID=PokemonTyyppi.TyyppiID; ";
+					
+				$STH = @$DBH->query($sql);
+				$STH->setFetchMode(PDO::FETCH_ASSOC);
+				$row = $STH->fetch();
+		?>
+		
             <h2>Products</h2>
             <p>Our extensive catalog where you'll find everything you need</p>
 			<div class="row">
