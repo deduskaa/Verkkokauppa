@@ -148,7 +148,7 @@ require_once('login.php');
 				<div class="thumbnail">
 				  <img src="http://cdn.bulbagarden.net/upload/thumb/2/21/001Bulbasaur.png/240px-001Bulbasaur.png" alt="bulbasaur">
 				  <div class="caption">
-					<h3>Bulbasaur</h3>
+					<h3><a href="Elukat/Bulbasaur.php">Bulbasaur</a></h3>
 					<p>Bulbasaurness</p>
 					<p id='hinta'>39,90 €</p>
 					<p><a href="#" class="snipcart-add-item btn btn-default"
