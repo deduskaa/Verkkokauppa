@@ -47,7 +47,7 @@ require_once('login.php');
       </form>
       <ul class="nav navbar-nav navbar-right">
 		<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
-			  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout">Logout</a></li>
+			  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
 			  <?php else: ?>
 			  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
 			  <?php endif;?>
@@ -66,15 +66,8 @@ require_once('login.php');
 			<section class="popupBody">
 			<!-- Social Login -->
 				<div class="social_login">
-					<div class="">
-						<a href="#" class="social_box fb" onclick="checkLoginState();" >
-							<span class="icon"><i class="fa fa-facebook"></i></span>
-							<span class="icon_title">Connect with Facebook</span>
-						</a>
-						<a href="#" class="social_box google">
-							<span class="icon"><i class="fa fa-google-plus"></i></span>
-							<span class="icon_title">Connect with Google</span>
-						</a>
+					<div class="centeredText">
+						<div class="fb-login-button" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
 					</div>
 
 					<div class="centeredText">
