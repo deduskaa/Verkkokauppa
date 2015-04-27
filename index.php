@@ -17,6 +17,7 @@ require_once('login.php');
 	<script type="text/javascript" id="snipcart" src="https://app.snipcart.com/scripts/snipcart.js"
     data-api-key="ZTIyNzAwMTYtOThjZC00NDcxLThlYjYtOGVmNmYzYjIwMTk5"></script>
 	<link id="snipcart-theme" type="text/css" href="https://app.snipcart.com/themes/base/snipcart.css" rel="stylesheet">
+	<script type="text/javascript" id="facebooklogin" src="js/facebooklogin.js"></script>
   </head>
   
   <body>
@@ -66,7 +67,7 @@ require_once('login.php');
 			<!-- Social Login -->
 				<div class="social_login">
 					<div class="">
-						<a href="#" class="social_box fb">
+						<a href="#" class="social_box fb" onclick="checkLoginState();" >
 							<span class="icon"><i class="fa fa-facebook"></i></span>
 							<span class="icon_title">Connect with Facebook</span>
 						</a>
@@ -176,27 +177,41 @@ require_once('login.php');
             </div>
         </div>
     </div>
+	
+	<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
+		<div class="container">
+			<div class="row">
+				<div class='col-md-4'>
+					<h1>Admin</h1>
+					<p>You don't have any rights</p>
+				</div>
+			</div>
+		</div>
+	<?php else: ?>
+		<div class="learn-more">
+		  <div class="container">
+			<div class="row">
+			  <div class="col-md-4">
+				<h3>About Us</h3>
+				<p>POKEMONDIILERS DIILING POKEMON FOR EVERYONE</p>			
+				<p><a href="#">Contact Us</a></p>
+			  </div>
+			  <div class="col-md-4">
+				<h3>Terms & Conditions</h3>
+				<p>You don't have any</p>
+				<p><a href="#">Don't read these</a></p>
+			  </div>
+			  <div class="col-md-4">
+				<h3>Trust and Safety</h3>
+				<p>We will steal all your money</p>
+				<p><a href="#">Why are you still here?</a></p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	<?php endif;?>
+	
 
-    <div class="learn-more">
-	  <div class="container">
-		<div class="row">
-	      <div class="col-md-4">
-			<h3>About Us</h3>
-			<p>POKEMONDIILERS DIILING POKEMON FOR EVERYONE</p>			
-			<p><a href="#">Contact Us</a></p>
-	      </div>
-		  <div class="col-md-4">
-			<h3>Terms & Conditions</h3>
-			<p>You don't have any</p>
-			<p><a href="#">Don't read these</a></p>
-		  </div>
-		  <div class="col-md-4">
-			<h3>Trust and Safety</h3>
-			<p>We will steal all your money</p>
-			<p><a href="#">Why are you still here?</a></p>
-		  </div>
-	    </div>
-	  </div>
-	</div>
+
   </body>
 </html>
