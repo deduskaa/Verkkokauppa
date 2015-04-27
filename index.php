@@ -133,38 +133,28 @@ require_once('login.php');
     </div>
     <div class="neighborhood-guides">
         <div class="container">
-            <h2>Popular Pokemons</h2>
+            <h2>Typetypetype</h2>
             <p>THE most popular pokemons that you will want to buy</p>
-            <a href="#"
-			class="snipcart-add-item"
-			data-item-id="2"
-			data-item-name="Bacon"
-			data-item-price="3.00"
-			data-item-weight="20"
-			data-item-url="http://myapp.com/products/bacon"
-			data-item-description="Some fresh bacon">
-			Buy bacon
-			</a>
             <div class="row">
                 <div class = "col-md-4">
                     <div class = "thumbnail">
-                        <img src="http://i.ytimg.com/vi/Eghk9bVNN9M/maxresdefault.jpg">
+                        <img id='frontPagepic' src="https://lh6.googleusercontent.com/-F3XMnJb0YsU/USlbnOls2YI/AAAAAAAADFY/1OVC0IOnvR4/w800-h800/sticker,375x360.png">
                     </div>
                       <div class = "thumbnail">
-                        <img src="http://goo.gl/an2HXY">
+                        <img id='frontPagepic' src="http://wordofgame.com/wp-content/uploads/2014/07/pokemon-water-type-symbol-mjz5sgae.png">
                     </div>
                 </div>
                 <div class = "col-md-4">
                     <div class = "thumbnail">
-                        <img src="http://goo.gl/Av1pac">
+                        <img id='frontPagepic' src="http://firetypepokemon.weebly.com/uploads/3/2/0/5/32050987/160983187.png">
                     </div>
                       <div class = "thumbnail">
-                        <img src="http://goo.gl/vw43v1">
+                        <img id='frontPagepic' src="http://cdn.playbuzz.com/cdn/4868eddb-fff5-41ba-8482-8436cdccf810/20f6c5af-1281-4327-988d-9b19999100a3.png">
                     </div>
                 </div>
                 <div class = "col-md-4">
                     <div class = "thumbnail">
-                        <img src="http://goo.gl/0Kd7UO">
+                        <img src="http://i.imgur.com/Ls6gd.jpg">
                     </div>
                 </div>
             </div>
