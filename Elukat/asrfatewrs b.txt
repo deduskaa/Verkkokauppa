@@ -1,0 +1,43 @@
+"<div class=\"col-sm-6 col-md-4\">
+				<div class=\"thumbnail\">
+				  <img src=\" . $row['URL'] . \" alt=\" . $row['Nimi'] .\">
+				  <div class=\"caption\">
+					<h3><a href=\"<?php echo . $row['SivuUrl'] . \"> .$row['Nimi']. </a></h3>
+					<p>. $row['Kuvaus'] .</p>
+					<p id='hinta'>. $row['Hinta']. </p>
+					<p><a href=\"#\" class=\"snipcart-add-item btn btn-default\"
+							data-item-id=\"3\"
+							data-item-name=\" . $row['Nimi']. \"
+							data-item-price=\" $row['Hinta'] \"
+							data-item-weight=\"20\"
+							data-item-url=\" . $row['SivuUrl'] .  € \"
+							data-item-description=\"I'm so gayyy\"
+							role=\"button\">Buy</a></p>
+				  </div>
+				</div>
+			  </div>"
+			  
+			  
+			  echo " . $row['Nimi']. "
+			  
+			  
+			  
+			  	"<div class=\"col-sm-6 col-md-4\">
+				<div class=\"thumbnail\">
+				  <img src=\"  . $row['URL'] . \" 
+				  alt=\" . $row['Nimi'] .\">
+				  <div class=\"caption\">
+					<h3><a href=\"<?php echo . $row['SivuUrl'] . \"> .$row['Nimi']. </a></h3>
+					<p>. $row['Kuvaus'] .</p>
+					<p id='hinta'>. $row['Hinta']. </p>
+					<p><a href=\"#\" class=\"snipcart-add-item btn btn-default\"
+							data-item-id=\"3\"
+							data-item-name=\" . $row['Nimi']. \"
+							data-item-price=\" $row['Hinta'] \"
+							data-item-weight=\"20\"
+							data-item-url=\" . $row['SivuUrl'] .  € \"
+							data-item-description=\"I'm so gayyy\"
+							role=\"button\">Buy</a></p>
+				  </div>
+				</div>
+			  </div>";
