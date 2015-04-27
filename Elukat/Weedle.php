@@ -206,7 +206,6 @@ WHERE
 					
 					
 					<p>
-							
 							<h2>Tyyppi1: <?php echo $row['Tyyppi']; ?></h2>
 							<h2>Tyyppi2: <?php echo $row['Tyyppi']; ?></h2>
 							<h2>Sukupuoli: <?php echo $row['Sukupuoli'] ?></h2>
