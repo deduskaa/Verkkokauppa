@@ -39,9 +39,9 @@ require_once('../yhteiset/dbYhteys.php');
       <ul class="nav navbar-nav">
         <li><a href="../products.php">Products</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search" action="Hakutulos.php">
+      <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" size="100" name="searchText" placeholder="Search by name or type">
+          <input type="text" class="form-control" size="50" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
@@ -140,65 +140,93 @@ require_once('../yhteiset/dbYhteys.php');
     <div class="neighborhood-guides">
         <div class="container">
        			</br>
-				
-					<div class="row">
-			</div>
-				</div>
-			  </div>
-			  
- <div class="caption">
 <?php 
-$name = $_GET['searchText'];
-
-
+  
 $sql = "SELECT 
-		Tyyppi.Tyyppi,
-		Pokemon.Nimi,
-		Hinta.Hinta
-	FROM 
-		Pokemon, 
-		Tyyppi, 
-		Hinta,
-		PokemonTyyppi 
-	WHERE 
-		
-		Pokemon.ID=PokemonTyyppi.PokemonID AND
-		Tyyppi.ID=PokemonTyyppi.TyyppiID AND
-		Hinta.ID = Pokemon.Hinta AND
-		(Tyyppi.Tyyppi LIKE '%$name%' OR
-		Pokemon.Nimi LIKE '%$name%');";
+	Pokemon.Nimi,
+	Sukupuoli.Sukupuoli,
+	Hinta.Hinta,
+	Pokemon.SivuUrl,
+	Pokemon.Kuvaus,
+	Kuva.URL,
+	Tyyppi.Tyyppi
+FROM
+	Pokemon,
+	Tyyppi,
+	PokemonTyyppi,
+	Sukupuoli,
+	Hinta,
+	Kuva,
+	PokemonKuva
+WHERE
+	Hinta.ID = Pokemon.Hinta AND
+	Sukupuoli.ID = Pokemon.Sukupuoli AND
+	Pokemon.Nimi = \"Pidgey\" AND
+	Kuva.ID = PokemonKuva.KuvaID AND
+	PokemonKuva.PokemonID = Pokemon.ID AND
+	Pokemon.ID=PokemonTyyppi.PokemonID AND
+	Tyyppi.ID=PokemonTyyppi.TyyppiID; ";
 		
 	$STH = @$DBH->query($sql);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 	$row = $STH->fetch();
+ 
+ 
 ?>
-
-
-
-<h1>  <?php echo "Etsit " . $name ; ?></h1>
-	<ul>
-		<?php		
-				
-		$STH = @$DBH->query($sql);	
-	while ($row = $STH->fetch(PDO::FETCH_ASSOC)): 
-			?>
-		
-		<li><h2><a href="<?php echo $row['SivuUrl'] ?>"><?php echo $row['Nimi'] ." ". $row['Hinta'] ." € "; ?></a></h2> </li>
-				<?php
-		
+	<div class="row">
+			</div>
+				</div>
+			  </div>
+			   <div class="neighborhood-guides">
+			<div class="container"> 
+			  <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
 			
-			endwhile;
-		
-		?>
-			
-			
-		
-			
-
-			  </ul>
+				  <div class="caption">
+					
+										<p>
+					</p>
+				  </div>
+				</div>
+			  </div>
+			   <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				  <img src="<?php echo $row['URL']; ?>" alt="kuva">
+				  <div class="caption">
+					<h3><?php echo $row['Nimi']; ?></h3>
+					<p><?php echo $row['Kuvaus']; ?></p>
+					
+				  </div>
+				</div>
+			  </div>
+			  			  <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				 
+				  <div class="caption">
+					
+					
+					<p>
+							
+							<h2>Tyyppi1: <?php echo $row['Tyyppi']; ?></h2>
+							<h2>Tyyppi2: <?php echo $row['Tyyppi']; ?></h2>
+							<h2>Sukupuoli: <?php echo $row['Sukupuoli'] ?></h2>
+					</p>
+					
+					<h1> <?php echo $row['Hinta']; ?> € </h1>
+					<p><a href="#" class="snipcart-add-item btn btn-default"
+							data-item-id="5"
+							data-item-name="<?php echo $row['Nimi']; ?>"
+							data-item-price="<?php echo $row['Hinta']; ?>"
+							data-item-url="<?php echo $row['SivuUrl']; ?>"
+							data-item-description="<?php echo $row['Kuvaus']; ?>"
+							role="button">Osta</a>
+					</p>
+				  </div>
+				</div>
+			  </div>
+			</div>
         </div>
     </div>
-</div>
 </div>
 </div>
 

@@ -1,15 +1,12 @@
 <?php 
 require_once('login.php');
-require_once('yhteiset/dbYhteys.php');
-require_once('yhteiset/funktiot.php');
-require_once('yhteiset/dbFunctions.php');
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokemondeals</title>
+    <title>Pokemondeals | Welcome</title>
 	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
 	<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
 	<link rel="stylesheet" href="css/main.css">
@@ -20,6 +17,7 @@ require_once('yhteiset/dbFunctions.php');
 	<script type="text/javascript" id="snipcart" src="https://app.snipcart.com/scripts/snipcart.js"
     data-api-key="ZTIyNzAwMTYtOThjZC00NDcxLThlYjYtOGVmNmYzYjIwMTk5"></script>
 	<link id="snipcart-theme" type="text/css" href="https://app.snipcart.com/themes/base/snipcart.css" rel="stylesheet">
+	<script type="text/javascript" id="facebooklogin" src="js/facebooklogin.js"></script>
   </head>
   
   <body>
@@ -49,17 +47,16 @@ require_once('yhteiset/dbFunctions.php');
       </form>
       <ul class="nav navbar-nav navbar-right">
 		<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
-		<li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout">Logout</a></li>
-		<?php else: ?>
-		<li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
-		<?php endif;?>
-		<li><a href="#" class="snipcart-checkout">Checkout</a></li>
-		<li>
-			<span class="snipcart-summary">
-				<p>Number of items: <span class="snipcart-total-items"></span><br />
-				Total price: <span class="snipcart-total-price"></span></p>
-			</span>
-		</li>
+			  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
+			  <?php else: ?>
+			  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
+			  <?php endif;?>
+			  <li><a href="#" class="snipcart-checkout">Checkout</a></li>
+			  <li><span class="snipcart-summary">
+			  <p>Number of items: <span class="snipcart-total-items"></span><br />
+			  Total price: <span class="snipcart-total-price"></span></p>
+			  </span></li>
+			  
       </ul>
 		<div id="modal" class="popupContainer" style="display:none;">
 			<header class="popupHeader">
@@ -69,15 +66,8 @@ require_once('yhteiset/dbFunctions.php');
 			<section class="popupBody">
 			<!-- Social Login -->
 				<div class="social_login">
-					<div class="">
-						<a href="#" class="social_box fb">
-							<span class="icon"><i class="fa fa-facebook"></i></span>
-							<span class="icon_title">Connect with Facebook</span>
-						</a>
-						<a href="#" class="social_box google">
-							<span class="icon"><i class="fa fa-google-plus"></i></span>
-							<span class="icon_title">Connect with Google</span>
-						</a>
+					<div class="centeredText">
+						<div class="fb-login-button" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
 					</div>
 
 					<div class="centeredText">
@@ -131,7 +121,7 @@ require_once('yhteiset/dbFunctions.php');
 				</div>
 			</section>
 		</div>	
-		<script type="text/javascript" src="../js/login.js"></script>	  
+		<script type="text/javascript" src="js/login.js"></script>	  
     </div>
   </div>
 
@@ -143,95 +133,68 @@ require_once('yhteiset/dbFunctions.php');
     </div>
     <div class="neighborhood-guides">
         <div class="container">
-		<?php 
-			$name = $_GET['searchText'];
-$sql = "SELECT 
-	Pokemon.Nimi,
-	Sukupuoli.Sukupuoli,
-	Hinta.Hinta,
-	Pokemon.SivuUrl,
-	Pokemon.Kuvaus,
-	Kuva.URL
-FROM
-	Pokemon,
-	PokemonTyyppi,
-	Sukupuoli,
-	Hinta,
-	Kuva,
-	PokemonKuva
-WHERE
-	Hinta.ID = Pokemon.Hinta AND
-	Sukupuoli.ID = Pokemon.Sukupuoli AND
-	Kuva.ID = PokemonKuva.KuvaID AND
-	PokemonKuva.PokemonID = Pokemon.ID;";
-					
-	//$STH = @$DBH->query($sql);
-	//$STH->setFetchMode(PDO::FETCH_ASSOC);
-	//$row = $STH->fetch();
-
-
-			//KUVIEN DATA
-			$STH = @$DBH->query($sql);	
-			//$STH->setFetchMode(PDO::FETCH_ASSOC);
-			
-// while ($row = mysql_fetch_assoc($STH)) {
- //   echo $row['Nimi'];
-  //  echo $row['Hinta'];}
-  
-		while ($row = $STH->fetch(PDO::FETCH_ASSOC)): 
-			?>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-				  <img src="<?php echo $row['URL']; ?>" alt="<?php echo $row['Nimi']; ?>">
-				  <div class="caption">
-					<h3><a href="<?php echo $row['SivuUrl']; ?>"><?php echo $row['Nimi']; ?></a></h3>
-					<p><?php echo $row['Kuvaus']; ?></p>
-					<p id='hinta'><?php echo $row['Hinta']; ?></p>
-					<p><a href="#" class="snipcart-add-item btn btn-default"
-							data-item-id="3"
-							data-item-name="<?php echo $row['Nimi']; ?>r"
-							data-item-price="<?php echo $row['Hinta']; ?>"
-							data-item-weight="20"
-							data-item-url="<?php echo $row['SivuUrl']; € ?>"
-							data-item-description="<?php echo $row['Kuvaus']; € ?>"
-							role="button">Buy</a></p>
-				  </div>
-				</div>
-			  </div>
-			
-		<?php
-			endwhile;
-		
-			
-
- ?>
-	
-	
-			  
-			</div>
+            <h2>Typetypetype</h2>
+            <p>THE most popular pokemons that you will want to buy</p>
+            <div class="row">
+                <div class = "col-md-4">
+                    <div class = "thumbnail">
+                        <img id='frontPagepic' src="https://lh6.googleusercontent.com/-F3XMnJb0YsU/USlbnOls2YI/AAAAAAAADFY/1OVC0IOnvR4/w800-h800/sticker,375x360.png">
+                    </div>
+                      <div class = "thumbnail">
+                        <img id='frontPagepic' src="http://wordofgame.com/wp-content/uploads/2014/07/pokemon-water-type-symbol-mjz5sgae.png">
+                    </div>
+                </div>
+                <div class = "col-md-4">
+                    <div class = "thumbnail">
+                        <img id='frontPagepic' src="http://firetypepokemon.weebly.com/uploads/3/2/0/5/32050987/160983187.png">
+                    </div>
+                      <div class = "thumbnail">
+                        <img id='frontPagepic' src="http://cdn.playbuzz.com/cdn/4868eddb-fff5-41ba-8482-8436cdccf810/20f6c5af-1281-4327-988d-9b19999100a3.png">
+                    </div>
+                </div>
+                <div class = "col-md-4">
+                    <div class = "thumbnail">
+                        <img src="http://i.imgur.com/Ls6gd.jpg">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+	
+	<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
+		<div class="container">
+			<div class="row">
+				<div class='col-md-4'>
+					<h1>Admin</h1>
+					<p>You don't have any rights</p>
+				</div>
+			</div>
+		</div>
+	<?php else: ?>
+		<div class="learn-more">
+		  <div class="container">
+			<div class="row">
+			  <div class="col-md-4">
+				<h3>About Us</h3>
+				<p>POKEMONDIILERS DIILING POKEMON FOR EVERYONE</p>			
+				<p><a href="#">Contact Us</a></p>
+			  </div>
+			  <div class="col-md-4">
+				<h3>Terms & Conditions</h3>
+				<p>You don't have any</p>
+				<p><a href="#">Don't read these</a></p>
+			  </div>
+			  <div class="col-md-4">
+				<h3>Trust and Safety</h3>
+				<p>We will steal all your money</p>
+				<p><a href="#">Why are you still here?</a></p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	<?php endif;?>
+	
 
-    <div class="learn-more">
-	  <div class="container">
-		<div class="row">
-	      <div class="col-md-4">
-			<h3>About Us</h3>
-			<p>POKEMONDIILERS DIILING POKEMON FOR EVERYONE</p>			
-			<p><a href="#">Contact Us</a></p>
-	      </div>
-		  <div class="col-md-4">
-			<h3>Terms & Conditions</h3>
-			<p>You don't have any</p>
-			<p><a href="#">Don't read these</a></p>
-		  </div>
-		  <div class="col-md-4">
-			<h3>Trust and Safety</h3>
-			<p>We will steal all your money</p>
-			<p><a href="#">Why are you still here?</a></p>
-		  </div>
-	    </div>
-	  </div>
-	</div>
+
   </body>
 </html>

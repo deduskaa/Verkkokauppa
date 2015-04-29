@@ -39,9 +39,9 @@ require_once('../yhteiset/dbYhteys.php');
       <ul class="nav navbar-nav">
         <li><a href="../products.php">Products</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search" action="Hakutulos.php">
+      <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" size="100" name="searchText" placeholder="Search by name or type">
+          <input type="text" class="form-control" size="50" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
@@ -141,7 +141,7 @@ require_once('../yhteiset/dbYhteys.php');
         <div class="container">
        			</br>
 <?php 
-$name = $_GET['searchText'];
+  
 $sql = "SELECT 
 	Pokemon.Nimi,
 	Sukupuoli.Sukupuoli,
@@ -161,7 +161,7 @@ FROM
 WHERE
 	Hinta.ID = Pokemon.Hinta AND
 	Sukupuoli.ID = Pokemon.Sukupuoli AND
-	Pokemon.Nimi = \"$name\" AND
+	Pokemon.Nimi = \"Raticate\" AND
 	Kuva.ID = PokemonKuva.KuvaID AND
 	PokemonKuva.PokemonID = Pokemon.ID AND
 	Pokemon.ID=PokemonTyyppi.PokemonID AND
@@ -170,19 +170,61 @@ WHERE
 	$STH = @$DBH->query($sql);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 	$row = $STH->fetch();
+ 
+ 
 ?>
 	<div class="row">
 			</div>
 				</div>
 			  </div>
 			   <div class="neighborhood-guides">
-		<ul>
-			<li> ASÖDLAV </li>
-			<li>dsalk  </li>
-			<li>sadbsa </li>
-			<li> söadlä </li>
-		
-		</ul>
+			<div class="container"> 
+			  <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+			
+				  <div class="caption">
+					
+										<p>
+					</p>
+				  </div>
+				</div>
+			  </div>
+			   <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				  <img src="<?php echo $row['URL']; ?>" alt="kuva">
+				  <div class="caption">
+					<h3><?php echo $row['Nimi']; ?></h3>
+					<p><?php echo $row['Kuvaus']; ?></p>
+					
+				  </div>
+				</div>
+			  </div>
+			  			  <div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				 
+				  <div class="caption">
+					
+					
+					<p>
+							
+							<h2>Tyyppi1: <?php echo $row['Tyyppi']; ?></h2>
+							<h2>Tyyppi2: <?php echo $row['Tyyppi']; ?></h2>
+							<h2>Sukupuoli: <?php echo $row['Sukupuoli'] ?></h2>
+					</p>
+					
+					<h1> <?php echo $row['Hinta']; ?> € </h1>
+					<p><a href="#" class="snipcart-add-item btn btn-default"
+							data-item-id="5"
+							data-item-name="<?php echo $row['Nimi']; ?>"
+							data-item-price="<?php echo $row['Hinta']; ?>"
+							data-item-url="<?php echo $row['SivuUrl']; ?>"
+							data-item-description="<?php echo $row['Kuvaus']; ?>"
+							role="button">Osta</a>
+					</p>
+				  </div>
+				</div>
+			  </div>
+			</div>
         </div>
     </div>
 </div>

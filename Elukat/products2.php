@@ -1,6 +1,8 @@
 <?php 
-require_once('../login.php');
-require_once('../yhteiset/dbYhteys.php');
+require_once('login.php');
+require_once('yhteiset/dbYhteys.php');
+require_once('yhteiset/funktiot.php');
+require_once('yhteiset/dbFunctions.php');
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -10,11 +12,11 @@ require_once('../yhteiset/dbYhteys.php');
     <title>Pokemondeals</title>
 	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
 	<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
-	<link rel="stylesheet" href="../css/main.css">
-	<script src="../js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.leanModal.min.js"></script>
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-	<link type="text/css" rel="stylesheet" href="../css/loginbox.css" />
+	<link type="text/css" rel="stylesheet" href="css/loginbox.css" />
 	<script type="text/javascript" id="snipcart" src="https://app.snipcart.com/scripts/snipcart.js"
     data-api-key="ZTIyNzAwMTYtOThjZC00NDcxLThlYjYtOGVmNmYzYjIwMTk5"></script>
 	<link id="snipcart-theme" type="text/css" href="https://app.snipcart.com/themes/base/snipcart.css" rel="stylesheet">
@@ -31,19 +33,19 @@ require_once('../yhteiset/dbYhteys.php');
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.php">Pokemondeals</a>
+      <a class="navbar-brand" href="index.php">Pokemondeals</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="../products.php">Products</a></li>
+        <li><a href="products.php">Products</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search" action="Hakutulos.php">
+      <form class="navbar-form navbar-left" role="search" action="Elukat/Hakutulos2.php">
         <div class="form-group">
           <input type="text" class="form-control" size="100" name="searchText" placeholder="Search by name or type">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" name="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
 		<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
@@ -51,10 +53,13 @@ require_once('../yhteiset/dbYhteys.php');
 		<?php else: ?>
 		<li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
 		<?php endif;?>
-		<span class="snipcart-summary">
-			Number of items: <span class="snipcart-total-items"></span>
-			Total price: <span class="snipcart-total-price"></span>
-		</span>
+		<li><a href="#" class="snipcart-checkout">Checkout</a></li>
+		<li>
+			<span class="snipcart-summary">
+				<p>Number of items: <span class="snipcart-total-items"></span><br />
+				Total price: <span class="snipcart-total-price"></span></p>
+			</span>
+		</li>
       </ul>
 		<div id="modal" class="popupContainer" style="display:none;">
 			<header class="popupHeader">
@@ -134,74 +139,75 @@ require_once('../yhteiset/dbYhteys.php');
       <div class="container">
         <h1>Pokemondeals</h1>
         <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
-        <a href="#">Learn More</a>
       </div>
     </div>
     <div class="neighborhood-guides">
         <div class="container">
-       			</br>
-				
-					<div class="row">
-			</div>
+		<?php 
+			$name = $_GET['searchText'];
+$sql = "	
+SELECT 
+	Pokemon.Nimi,
+	Hinta.Hinta,
+	Pokemon.SivuUrl,
+	Pokemon.Kuvaus,
+	Kuva.URL
+FROM
+	Pokemon,
+	Hinta,
+	Kuva,
+	PokemonKuva
+WHERE
+	Hinta.ID = Pokemon.Hinta AND
+	Kuva.ID = PokemonKuva.KuvaID AND
+	PokemonKuva.PokemonID = Pokemon.ID;";
+					
+	//$STH = @$DBH->query($sql);
+	//$STH->setFetchMode(PDO::FETCH_ASSOC);
+	//$row = $STH->fetch();
+
+
+			//KUVIEN DATA
+			$STH = @$DBH->query($sql);	
+			//$STH->setFetchMode(PDO::FETCH_ASSOC);
+			
+// while ($row = mysql_fetch_assoc($STH)) {
+ //   echo $row['Nimi'];
+  //  echo $row['Hinta'];}
+  
+		while ($row = $STH->fetch(PDO::FETCH_ASSOC)): 
+			?>
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+				  <img src="<?php echo $row['URL']; ?>" alt="<?php echo $row['Nimi']; ?>">
+				  <div class="caption">
+					<h3><a href="<?php echo $row['SivuUrl']; ?>"><?php echo $row['Nimi']; ?></a></h3>
+					<p><?php echo $row['Kuvaus']; ?></p>
+					<p id='hinta'><?php echo $row['Hinta']; ?></p>
+					<p><a href="#" class="snipcart-add-item btn btn-default"
+							data-item-id="3"
+							data-item-name="<?php echo $row['Nimi']; ?>r"
+							data-item-price="<?php echo $row['Hinta']; ?>"
+							data-item-weight="20"
+							data-item-url="<?php echo $row['SivuUrl']; € ?>"
+							data-item-description="<?php echo $row['Kuvaus']; € ?>"
+							role="button">Buy</a></p>
+				  </div>
 				</div>
 			  </div>
-			  
- <div class="caption">
-<?php 
-$name = $_GET['searchText'];
-
-
-$sql = "SELECT 
-		Tyyppi.Tyyppi,
-		Pokemon.Nimi,
-		Hinta.Hinta
-	FROM 
-		Pokemon, 
-		Tyyppi, 
-		Hinta,
-		PokemonTyyppi 
-	WHERE 
-		
-		Pokemon.ID=PokemonTyyppi.PokemonID AND
-		Tyyppi.ID=PokemonTyyppi.TyyppiID AND
-		Hinta.ID = Pokemon.Hinta AND
-		(Tyyppi.Tyyppi LIKE '%$name%' OR
-		Pokemon.Nimi LIKE '%$name%');";
-		
-	$STH = @$DBH->query($sql);
-	$STH->setFetchMode(PDO::FETCH_ASSOC);
-	$row = $STH->fetch();
-?>
-
-
-
-<h1>  <?php echo "Etsit " . $name ; ?></h1>
-	<ul>
-		<?php		
-				
-		$STH = @$DBH->query($sql);	
-	while ($row = $STH->fetch(PDO::FETCH_ASSOC)): 
-			?>
-		
-		<li><h2><a href="<?php echo $row['SivuUrl'] ?>"><?php echo $row['Nimi'] ." ". $row['Hinta'] ." € "; ?></a></h2> </li>
-				<?php
-		
 			
+		<?php
 			endwhile;
 		
-		?>
-			
-			
-		
 			
 
-			  </ul>
+ ?>
+	
+	
+			  
+			</div>
         </div>
     </div>
-</div>
-</div>
-</div>
-
 
     <div class="learn-more">
 	  <div class="container">
