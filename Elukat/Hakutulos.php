@@ -146,7 +146,6 @@ require_once('../yhteiset/dbYhteys.php');
 				</div>
 			  </div>
 			  
- <div class="caption">
 <?php 
 $name = $_GET['searchText'];
 
@@ -154,7 +153,9 @@ $name = $_GET['searchText'];
 $sql = "SELECT 
 		Tyyppi.Tyyppi,
 		Pokemon.Nimi,
-		Hinta.Hinta
+		Hinta.Hinta,
+		Pokemon.SivuUrl,
+		Pokemon.Kuvaus
 	FROM 
 		Pokemon, 
 		Tyyppi, 
@@ -172,35 +173,37 @@ $sql = "SELECT
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 	$row = $STH->fetch();
 ?>
-
-
-
-<h1>  <?php echo "Etsit " . $name ; ?></h1>
-	<ul>
-		<?php		
-				
-		$STH = @$DBH->query($sql);	
-	while ($row = $STH->fetch(PDO::FETCH_ASSOC)): 
-			?>
-		
-		<li><h2><a href="<?php echo $row['SivuUrl'] ?>"><?php echo $row['Nimi'] ." ". $row['Hinta'] ." € "; ?></a></h2> </li>
-				<?php
-		
-			
-			endwhile;
-		
+	<div class="page-header">
+		<h1><?php echo "Etsit " . $name ; ?></h1>
+	</div>
+		<?php				
+			$STH = @$DBH->query($sql);	
+			while ($row = $STH->fetch(PDO::FETCH_ASSOC)): 
 		?>
-			
-			
-		
-			
-
+		<div class="col-sm-6 col-md-3">
+			<div class="thumbnail">
+				<img src="<?php echo $row['URL']; ?>" alt="<?php echo $row['Nimi']; ?>">
+				<div class="caption">
+				<h3><a href="<?php echo $row['SivuUrl']; ?>"><?php echo $row['Nimi']; ?></a></h3>
+				<p><?php echo $row['Kuvaus']; ?></p>
+				<p id='hinta'><?php echo $row['Hinta']; ?> €
+				<a href="#" class="snipcart-add-item btn btn-default"
+							data-item-id="3"
+							data-item-name="<?php echo $row['Nimi']; ?>r"
+							data-item-price="<?php echo $row['Hinta']; ?>"
+							data-item-weight="20"
+							data-item-url="<?php echo $row['SivuUrl']; € ?>"
+							data-item-description="<?php echo $row['Kuvaus']; € ?>"
+							role="button">Buy</a></p>
+					  </div>
+					</div>
+				</div>
+		<?php
+			endwhile;
+		?>
 			  </ul>
         </div>
     </div>
-</div>
-</div>
-</div>
 
 
     <div class="learn-more">
