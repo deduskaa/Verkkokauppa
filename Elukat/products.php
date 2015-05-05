@@ -145,38 +145,38 @@ require_once('yhteiset/dbFunctions.php');
         <div class="container">
 		<?php 
 			$name = $_GET['searchText'];
-$sql = "	
-SELECT 
-	Pokemon.Nimi,
-	Hinta.Hinta,
-	Pokemon.SivuUrl,
-	Pokemon.Kuvaus,
-	Kuva.URL
-FROM
-	Pokemon,
-	Hinta,
-	Kuva,
-	PokemonKuva
-WHERE
-	Hinta.ID = Pokemon.Hinta AND
-	Kuva.ID = PokemonKuva.KuvaID AND
-	PokemonKuva.PokemonID = Pokemon.ID;";
-					
-	//$STH = @$DBH->query($sql);
-	//$STH->setFetchMode(PDO::FETCH_ASSOC);
-	//$row = $STH->fetch();
+			$sql = "	
+			SELECT 
+				Pokemon.Nimi,
+				Hinta.Hinta,
+				Pokemon.SivuUrl,
+				Pokemon.Kuvaus,
+				Kuva.URL
+			FROM
+				Pokemon,
+				Hinta,
+				Kuva,
+				PokemonKuva
+			WHERE
+				Hinta.ID = Pokemon.Hinta AND
+				Kuva.ID = PokemonKuva.KuvaID AND
+				PokemonKuva.PokemonID = Pokemon.ID;";
+								
+				//$STH = @$DBH->query($sql);
+				//$STH->setFetchMode(PDO::FETCH_ASSOC);
+				//$row = $STH->fetch();
 
 
-			//KUVIEN DATA
-			$STH = @$DBH->query($sql);	
-			//$STH->setFetchMode(PDO::FETCH_ASSOC);
-			
-// while ($row = mysql_fetch_assoc($STH)) {
- //   echo $row['Nimi'];
-  //  echo $row['Hinta'];}
+						//KUVIEN DATA
+						$STH = @$DBH->query($sql);	
+						//$STH->setFetchMode(PDO::FETCH_ASSOC);
+						
+			// while ($row = mysql_fetch_assoc($STH)) {
+			 //   echo $row['Nimi'];
+			  //  echo $row['Hinta'];}
   
-		while ($row = $STH->fetch(PDO::FETCH_ASSOC)): 
-			?>
+			while ($row = $STH->fetch(PDO::FETCH_ASSOC)): 
+		?>
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
 				  <img src="<?php echo $row['URL']; ?>" alt="<?php echo $row['Nimi']; ?>">

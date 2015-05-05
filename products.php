@@ -21,7 +21,8 @@ require_once('yhteiset/dbFunctions.php');
     data-api-key="ZTIyNzAwMTYtOThjZC00NDcxLThlYjYtOGVmNmYzYjIwMTk5"></script>
 	<link id="snipcart-theme" type="text/css" href="https://app.snipcart.com/themes/base/snipcart.css" rel="stylesheet">
   </head>
-    <body>
+  
+  <body>
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -177,15 +178,15 @@ require_once('yhteiset/dbFunctions.php');
 					  <div class="caption">
 						<h3><a href="<?php echo $row['SivuUrl']; ?>"><?php echo $row['Nimi']; ?></a></h3>
 						<p><?php echo $row['Kuvaus']; ?></p>
-						<p id='hinta'><?php echo $row['Hinta']; ?> €
-						<a href="#" class="snipcart-add-item btn btn-default"
-								data-item-id="3"
+						<p id='hinta'><?php echo $row['Hinta']; ?> € 
+						<a href="#" class="snipcart-add-item btn btn-default btn-sm"
+								data-item-id="<?php echo $row['ID']; ?>"
 								data-item-name="<?php echo $row['Nimi']; ?>r"
 								data-item-price="<?php echo $row['Hinta']; ?>"
 								data-item-weight="20"
 								data-item-url="<?php echo $row['SivuUrl']; € ?>"
 								data-item-description="<?php echo $row['Kuvaus']; € ?>"
-								role="button">Buy</a></p>
+								role="button">Add to cart</a></p>
 					  </div>
 					</div>
 				</div>

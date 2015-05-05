@@ -52,6 +52,17 @@
     background-color: #efefef;
     border-bottom: 1px solid #dbdbdb;
     }
+	
+.pokemonCont {
+    background-color: #efefef;
+    border-bottom: 1px solid #dbdbdb;
+    }
+	
+.imageCont img{
+	padding: 10px;
+	height: 500px;
+	width: 500px;
+}	
     
 .neighborhood-guides h2 {
     color: #393c3d;

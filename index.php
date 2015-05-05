@@ -8,7 +8,7 @@ require_once('login.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokemondeals | Welcome</title>
 	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
-	<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
@@ -18,6 +18,7 @@ require_once('login.php');
     data-api-key="ZTIyNzAwMTYtOThjZC00NDcxLThlYjYtOGVmNmYzYjIwMTk5"></script>
 	<link id="snipcart-theme" type="text/css" href="https://app.snipcart.com/themes/base/snipcart.css" rel="stylesheet">
 	<script type="text/javascript" id="facebooklogin" src="js/facebooklogin.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   </head>
   
   <body>
@@ -125,12 +126,44 @@ require_once('login.php');
 		</div>
 	  </div>
 	</nav>
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Pokemondeals</h1>
-        <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
-      </div>
-    </div>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+			<li data-target="#myCarousel" data-slide-to="3"></li>
+		  </ol>
+
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+			<div class="item active">
+			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Chania">
+			</div>
+
+			<div class="item">
+			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Chania">
+			</div>
+
+			<div class="item">
+			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Flower">
+			</div>
+
+			<div class="item">
+			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Flower">
+			</div>
+		  </div>
+
+		  <!-- Left and right controls -->
+		  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		  </a>
+		</div>
     <div class="neighborhood-guides">
         <div class="container">
             <h2>Typetypetype</h2>

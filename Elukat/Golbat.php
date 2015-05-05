@@ -146,7 +146,7 @@ require_once('../yhteiset/dbYhteys.php');
 		WHERE
 			Hinta.ID = Pokemon.Hinta AND
 			Sukupuoli.ID = Pokemon.Sukupuoli AND
-			Pokemon.Nimi = \"Pidgeotto\" AND
+			Pokemon.Nimi = \"Golbat\" AND
 			Kuva.ID = PokemonKuva.KuvaID AND
 			PokemonKuva.PokemonID = Pokemon.ID AND
 			Pokemon.ID=PokemonTyyppi.PokemonID AND

@@ -19,7 +19,7 @@ require_once('../yhteiset/dbYhteys.php');
     data-api-key="ZTIyNzAwMTYtOThjZC00NDcxLThlYjYtOGVmNmYzYjIwMTk5"></script>
 	<link id="snipcart-theme" type="text/css" href="https://app.snipcart.com/themes/base/snipcart.css" rel="stylesheet">
   </head>
-    <body>
+  <body>
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -30,15 +30,15 @@ require_once('../yhteiset/dbYhteys.php');
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="index.php">Pokemondeals</a>
+		  <a class="navbar-brand" href="../index.php">Pokemondeals</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  <ul class="nav navbar-nav">
-			<li><a href="products.php">Products</a></li>
+			<li><a href="../products.php">Products</a></li>
 		  </ul>
-		  <form class="navbar-form navbar-left" role="search" action="Elukat/Hakutulos.php">
+		  <form class="navbar-form navbar-left" role="search" action="Hakutulos.php">
 			<div class="form-group">
 			  <input type="text" class="form-control" size="100" name="searchText" placeholder="Search by name or type">
 			</div>
@@ -48,7 +48,7 @@ require_once('../yhteiset/dbYhteys.php');
 			<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
 				  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
 				  <?php else: ?>
-				  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
+				  <li><a id="modal_trigger" href="#modal" action="../js/loginpopup.php">Log In</a></li>
 				  <?php endif;?>
 				  <li><a href="#" class="snipcart-checkout">Checkout</a></li>
 				  <li><span class="snipcart-summary">
@@ -124,107 +124,69 @@ require_once('../yhteiset/dbYhteys.php');
 		</div>
 	  </div>
 	</nav>
-    <div class="jumbotron">
       <div class="container">
-        <h1>Pokemondeals</h1>
-        <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
-        <a href="#">Learn More</a>
-      </div>
     </div>
-    <div class="neighborhood-guides">
-        <div class="container">
-       			</br>
-<?php 
-  
-$sql = "SELECT 
-	Pokemon.Nimi,
-	Sukupuoli.Sukupuoli,
-	Hinta.Hinta,
-	Pokemon.SivuUrl,
-	Pokemon.Kuvaus,
-	Kuva.URL,
-	Tyyppi.Tyyppi
-FROM
-	Pokemon,
-	Tyyppi,
-	PokemonTyyppi,
-	Sukupuoli,
-	Hinta,
-	Kuva,
-	PokemonKuva
-WHERE
-	Hinta.ID = Pokemon.Hinta AND
-	Sukupuoli.ID = Pokemon.Sukupuoli AND
-	Pokemon.Nimi = \"Arbok\" AND
-	Kuva.ID = PokemonKuva.KuvaID AND
-	PokemonKuva.PokemonID = Pokemon.ID AND
-	Pokemon.ID=PokemonTyyppi.PokemonID AND
-	Tyyppi.ID=PokemonTyyppi.TyyppiID; ";
-		
-	$STH = @$DBH->query($sql);
-	$STH->setFetchMode(PDO::FETCH_ASSOC);
-	$row = $STH->fetch();
- 
- 
-?>
+	<?php 
+		$sql = "SELECT 
+			Pokemon.Nimi,
+			Sukupuoli.Sukupuoli,
+			Hinta.Hinta,
+			Pokemon.SivuUrl,
+			Pokemon.Kuvaus,
+			Kuva.URL,
+			Tyyppi.Tyyppi
+		FROM
+			Pokemon,
+			Tyyppi,
+			PokemonTyyppi,
+			Sukupuoli,
+			Hinta,
+			Kuva,
+			PokemonKuva
+		WHERE
+			Hinta.ID = Pokemon.Hinta AND
+			Sukupuoli.ID = Pokemon.Sukupuoli AND
+			Pokemon.Nimi = \"Arbok\" AND
+			Kuva.ID = PokemonKuva.KuvaID AND
+			PokemonKuva.PokemonID = Pokemon.ID AND
+			Pokemon.ID=PokemonTyyppi.PokemonID AND
+			Tyyppi.ID=PokemonTyyppi.TyyppiID; ";
+				
+			$STH = @$DBH->query($sql);
+			$STH->setFetchMode(PDO::FETCH_ASSOC);
+			$row = $STH->fetch();
+	?>
+	<div class="page-header">
+		<h1><?php echo $row['Nimi']; ?></h1>
+	</div>
 	<div class="row">
-			</div>
-				</div>
-			  </div>
-			   <div class="neighborhood-guides">
+		<div class="pokemonCont">
 			<div class="container"> 
-			  <div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-			
-				  <div class="caption">
-					
-										<p>
-					</p>
-				  </div>
+				<div class="col-sm-6 col-md-6">
+					<div class='imageCont'>
+					  <img src="<?php echo $row['URL']; ?>" alt="kuva">
+					</div>
 				</div>
-			  </div>
-			   <div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-				  <img src="<?php echo $row['URL']; ?>" alt="kuva">
-				  <div class="caption">
+			  	<div class="col-sm-6 col-md-6">
 					<h3><?php echo $row['Nimi']; ?></h3>
 					<p><?php echo $row['Kuvaus']; ?></p>
-					
-				  </div>
-				</div>
-			  </div>
-			  			  <div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-				 
-				  <div class="caption">
-					
-					
-					<p>
-							
-							<h2>Tyyppi1: <?php echo $row['Tyyppi']; ?></h2>
-							<h2>Tyyppi2: <?php echo $row['Tyyppi']; ?></h2>
-							<h2>Sukupuoli: <?php echo $row['Sukupuoli'] ?></h2>
-					</p>
-					
-					<h1> <?php echo $row['Hinta']; ?> € </h1>
+					<h2>Type1: <?php echo $row['Tyyppi']; ?></h2>
+					<h2>Type2: <?php echo $row['Tyyppi']; ?></h2>
+					<h2>Gender: <?php echo $row['Sukupuoli'] ?></h2>
+					<h2>Price: <?php echo $row['Hinta']; ?> € </h2>
 					<p><a href="#" class="snipcart-add-item btn btn-default"
 							data-item-id="5"
 							data-item-name="<?php echo $row['Nimi']; ?>"
 							data-item-price="<?php echo $row['Hinta']; ?>"
 							data-item-url="<?php echo $row['SivuUrl']; ?>"
 							data-item-description="<?php echo $row['Kuvaus']; ?>"
-							role="button">Osta</a>
+							role="button">Add to cart</a>
 					</p>
-				  </div>
 				</div>
-			  </div>
 			</div>
-        </div>
-    </div>
-</div>
-</div>
-
-
+		</div>
+	</div>
+	
     <div class="learn-more">
 	  <div class="container">
 		<div class="row">
