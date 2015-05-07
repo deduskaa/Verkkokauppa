@@ -150,8 +150,31 @@ FROM
 	
 	
 	?>
+	
 		<div  id="myCarousel" class="carousel slide" data-ride="carousel">
-		 <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		  <!-- Indicators -->
+
+		  
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<center><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva"></img></a></center>
+				</div>
+				<div class="item">
+					<center><a  href="<?php echo $row['SivuUrl'];?>"><img height="100" width="100" src="<?php echo $row['Charmander.URL']; ?>" alt="kuva"></img></a></center>
+				</div>
+				<div class="item">
+					<center><a  href="<?php echo $row['SivuUrl'];?>"><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva"></img></a></center>
+				</div>
+				<div class="item">
+				  <center><a  href="<?php echo $row['SivuUrl'];?>"><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva4"></img></a></center>
+				</div>
+				<div class="item">
+				  <center><a  href="<?php echo $row['SivuUrl'];?>"><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva5"></img></a></center>
+				</div>
+		  </div>
+		   <!-- Left and right controls -->
+		  	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 			<span class="sr-only">Previous</span>
 		  </a>
@@ -159,39 +182,12 @@ FROM
 			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			<span class="sr-only">Next</span>
 		  </a>
-		</div>
-		  <!-- Left and right controls -->
-		 
-		</div>
-		  <!-- Indicators -->
-		  <ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-		  </ol>
-
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<center><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva"></img></a></center>
-			</div>
-			<div class="item">
-				<center><a  href="<?php echo $row['SivuUrl'];?>"><img height="50" width="50" src="<?php echo $row['URL']; ?>" alt="kuva"></img></a></center>
-			</div>
-			<div class="item">
-				<a  href="<?php echo $row['SivuUrl'];?>"><img height="50" width="50" src="<?php echo $row['URL']; ?>" alt="kuva"></img></a>
-			</div>
-			<div class="item">
-			  <img height="50" width="50" src="<?php echo $row['URL']; ?>" alt="kuva4"></img>
-			</div>
-			<div class="item">
-			  <img height="50" width="50" src="<?php echo $row['URL']; ?>" alt="kuva5"></img>
-			</div>
-		  </div>
 		 </div> 
-
-
+		 
 		  
+
+		
+		
 			<div id="modal" class="popupContainer" style="display:none;">
 				<header class="popupHeader">
 					<span class="header_title">Login</span>

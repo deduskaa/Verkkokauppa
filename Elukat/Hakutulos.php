@@ -150,24 +150,31 @@ require_once('../yhteiset/dbYhteys.php');
 $name = $_GET['searchText'];
 
 
-$sql = "SELECT 
-		Tyyppi.Tyyppi,
-		Pokemon.Nimi,
-		Hinta.Hinta,
-		Pokemon.SivuUrl,
-		Pokemon.Kuvaus
+$sql = "SELECT
+			Pokemon.Nimi,
+			Hinta.Hinta,
+			Pokemon.SivuUrl,
+			Pokemon.Kuvaus,
+			Kuva.URL,
+			Tyyppi.Tyyppi
+
 	FROM 
-		Pokemon, 
-		Tyyppi, 
-		Hinta,
-		PokemonTyyppi 
+			Pokemon,
+			Tyyppi,
+			PokemonTyyppi,
+			Sukupuoli,
+			Hinta,
+			Kuva,
+			PokemonKuva
 	WHERE 
-		
 		Pokemon.ID=PokemonTyyppi.PokemonID AND
 		Tyyppi.ID=PokemonTyyppi.TyyppiID AND
+		PokemonKuva.PokemonID = Pokemon.ID AND
 		Hinta.ID = Pokemon.Hinta AND
 		(Tyyppi.Tyyppi LIKE '%$name%' OR
 		Pokemon.Nimi LIKE '%$name%');";
+		
+		
 		
 	$STH = @$DBH->query($sql);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
@@ -182,7 +189,7 @@ $sql = "SELECT
 		?>
 		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<img src="<?php echo $row['URL']; ?>" alt="<?php echo $row['Nimi']; ?>">
+				<img src="<?php echo $row['URL']; ?>" alt="<?php echo $row['Nimi']; ?>"></img>
 				<div class="caption">
 				<h3><a href="<?php echo $row['SivuUrl']; ?>"><?php echo $row['Nimi']; ?></a></h3>
 				<p><?php echo $row['Kuvaus']; ?></p>
