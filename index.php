@@ -34,7 +34,6 @@ require_once('login.php');
 		  </button>
 		  <a class="navbar-brand" href="index.php">Pokemondeals</a>
 		</div>
-<<<<<<< HEAD
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -152,50 +151,46 @@ FROM
 	
 	?>
 		<div  id="myCarousel" class="carousel slide" data-ride="carousel">
+		 <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		  </a>
+		</div>
+		  <!-- Left and right controls -->
+		 
+		</div>
 		  <!-- Indicators -->
 		  <ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 			<li data-target="#myCarousel" data-slide-to="1"></li>
 			<li data-target="#myCarousel" data-slide-to="2"></li>
-			<li data-target="#myCarousel" data-slide-to="3"></li>
 		  </ol>
 
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
-			<div class="item">
-			   <a   href="<?php echo $row['SivuUrl'];?>"><img src="<?php echo $row['URL']; ?>" alt="kuva"></img></a>
-			</div>
-
 			<div class="item active">
-			  <img height="50" width="50" src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Chania"></img>
+				<center><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva"></img></a></center>
+			</div>
+			<div class="item">
+				<center><a  href="<?php echo $row['SivuUrl'];?>"><img height="50" width="50" src="<?php echo $row['URL']; ?>" alt="kuva"></img></a></center>
+			</div>
+			<div class="item">
+				<a  href="<?php echo $row['SivuUrl'];?>"><img height="50" width="50" src="<?php echo $row['URL']; ?>" alt="kuva"></img></a>
+			</div>
+			<div class="item">
+			  <img height="50" width="50" src="<?php echo $row['URL']; ?>" alt="kuva4"></img>
+			</div>
+			<div class="item">
+			  <img height="50" width="50" src="<?php echo $row['URL']; ?>" alt="kuva5"></img>
 			</div>
 		  </div>
-		  
-=======
+		 </div> 
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		  <ul class="nav navbar-nav">
-			<li><a href="products.php">Products</a></li>
-		  </ul>
-		  <form class="navbar-form navbar-left" role="search" action="Elukat/Hakutulos.php">
-			<div class="form-group">
-			  <input type="text" class="form-control" size="100" name="searchText" placeholder="Search by name or type">
-			</div>
-			<button type="submit" name="submit" class="btn btn-default">Submit</button>
-		  </form>
-		  <ul class="nav navbar-nav navbar-right">
-			<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
-				  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
-				  <?php else: ?>
-				  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
-				  <?php endif;?>
-				  <li><a href="#" class="snipcart-checkout">Checkout</a></li>
-				  <li><span class="snipcart-summary">
-				  <p>Number of items: <span class="snipcart-total-items"></span><br />
-				  Total price: <span class="snipcart-total-price"></span></p>
-				  </span></li>	  
-		  </ul>
+
 		  
 			<div id="modal" class="popupContainer" style="display:none;">
 				<header class="popupHeader">
@@ -264,45 +259,7 @@ FROM
 		</div>
 	  </div>
 	</nav>
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		  <!-- Indicators -->
-		  <ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-			<li data-target="#myCarousel" data-slide-to="3"></li>
-		  </ol>
 
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner" role="listbox">
-			<div class="item active">
-			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Chania">
-			</div>
-
-			<div class="item">
-			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Chania">
-			</div>
-
-			<div class="item">
-			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Flower">
-			</div>
-
-			<div class="item">
-			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Flower">
-			</div>
-		  </div>
-
->>>>>>> origin/master
-		  <!-- Left and right controls -->
-		  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		  </a>
-		  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		  </a>
-		</div>
     <div class="neighborhood-guides">
         <div class="container">
             <h2>Typetypetype</h2>
