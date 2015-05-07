@@ -148,7 +148,7 @@ FROM
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 	$row = $STH->fetch();
 	
-	
+
 	?>
 	
 		<div  id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -157,21 +157,28 @@ FROM
 		  
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
+		  
+		  <?php 
+				$STH = @$DBH->query($sql);
+				
+				while ($row = $STH->fetch(PDO::FETCH_ASSOC)): ?>
+				
 				<div class="item active">
 					<center><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva"></img></a></center>
 				</div>
+								
+				
+				<?php endwhile; ?>
 				<div class="item">
-					<center><a  href="<?php echo $row['SivuUrl'];?>"><img height="100" width="100" src="<?php echo $row['Charmander.URL']; ?>" alt="kuva"></img></a></center>
+					<center><a  href="<?php echo $row['SivuUrl'];?>"><img height="500" width="100" src="<?php echo $row['Charmander.URL']; ?>" alt="<?php echo $row['Nimi']; ?>"></img></a></center>
 				</div>
 				<div class="item">
-					<center><a  href="<?php echo $row['SivuUrl'];?>"><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva"></img></a></center>
+				  <center><a  href="<?php echo $row['SivuUrl'];?>"><img height="100" width="100" src="<?php echo $row['Bulbasaur.URL']; ?>" alt="<?php echo $row['Bulbasaur.Nimi']; ?>"></img></a></center>
 				</div>
 				<div class="item">
-				  <center><a  href="<?php echo $row['SivuUrl'];?>"><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva4"></img></a></center>
-				</div>
-				<div class="item">
-				  <center><a  href="<?php echo $row['SivuUrl'];?>"><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva5"></img></a></center>
-				</div>
+				  <center><a  href="<?php echo $row['SivuUrl'];?>"><img height="100" width="100" src="<?php echo $row['Squirtle.URL']; ?>" alt="<?php echo $row['Squirle.Nimi']; ?>"></img></a></center>
+				</div>			
+
 		  </div>
 		   <!-- Left and right controls -->
 		  	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
