@@ -151,7 +151,7 @@ FROM
 	
 	
 	?>
-	
+		<div  id="myCarousel" class="carousel slide" data-ride="carousel">
 		  <!-- Indicators -->
 		  <ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -163,7 +163,7 @@ FROM
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
 			<div class="item">
-			 
+			   <a   href="<?php echo $row['SivuUrl'];?>"><img src="<?php echo $row['URL']; ?>" alt="kuva"></img></a>
 			</div>
 
 			<div class="item active">
