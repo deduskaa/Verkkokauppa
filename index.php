@@ -273,7 +273,7 @@ FROM
                         <img id='frontPagepic' src="https://lh6.googleusercontent.com/-F3XMnJb0YsU/USlbnOls2YI/AAAAAAAADFY/1OVC0IOnvR4/w800-h800/sticker,375x360.png">
                     </div>
                       <div>
-                        <img id='frontPagepic' src="http://wordofgame.com/wp-content/uploads/2014/07/pokemon-water-type-symbol-mjz5sgae.png">
+                        <img href="#"'  id='frontPagepic' src="http://wordofgame.com/wp-content/uploads/2014/07/pokemon-water-type-symbol-mjz5sgae.png">
                     </div>
                 </div>
                 <div class = "col-md-4">

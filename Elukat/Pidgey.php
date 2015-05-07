@@ -173,10 +173,14 @@ require_once('../yhteiset/dbYhteys.php');
 			  	<div class="col-sm-6 col-md-6">
 					<h3><?php echo $row['Nimi']; ?></h3>
 					<p><?php echo $row['Kuvaus']; ?></p>
-					<h2>Type1: <?php echo $row['Tyyppi']; ?></h2>
-					<h2>Type2: <?php echo $row['Tyyppi']; ?></h2>
-					<h2>Gender: <?php echo $row['Sukupuoli'] ?></h2>
 					<h2>Price: <?php echo $row['Hinta']; ?> € </h2>
+					<h2>Gender: <?php echo $row['Sukupuoli'] ?></h2>
+					
+				
+					<h2>Tyypi: <?php echo $row['Tyyppi']; ?></h2>
+					
+					<?php $STH = @$DBH->query($sql);
+					$STH->setFetchMode(PDO::FETCH_ASSOC); ?>
 					<p><a href="#" class="snipcart-add-item btn btn-default"
 							data-item-id="5"
 							data-item-name="<?php echo $row['Nimi']; ?>"
