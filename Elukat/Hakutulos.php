@@ -151,6 +151,7 @@ $name = $_GET['searchText'];
 
 
 $sql = "SELECT 
+		Pokemon.ID,
 		Tyyppi.Tyyppi,
 		Pokemon.Nimi,
 		Hinta.Hinta,
@@ -195,7 +196,7 @@ $sql = "SELECT
 				<p><?php echo $row['Kuvaus']; ?></p>
 				<p id='hinta'><?php echo $row['Hinta']; ?> €
 				<a href="#" class="snipcart-add-item btn btn-default"
-							data-item-id="3"
+							data-item-id="<?php echo $row['ID']; ?>"
 							data-item-name="<?php echo $row['Nimi']; ?>r"
 							data-item-price="<?php echo $row['Hinta']; ?>"
 							data-item-weight="20"

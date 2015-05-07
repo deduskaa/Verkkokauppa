@@ -127,7 +127,8 @@ require_once('../yhteiset/dbYhteys.php');
       <div class="container">
     </div>
 	<?php 
-		$sql = "SELECT 
+		$sql = "SELECT
+			Pokemon.ID,
 			Pokemon.Nimi,
 			Sukupuoli.Sukupuoli,
 			Hinta.Hinta,
@@ -175,7 +176,7 @@ require_once('../yhteiset/dbYhteys.php');
 					<h2>Gender: <?php echo $row['Sukupuoli'] ?></h2>
 					<h2>Price: <?php echo $row['Hinta']; ?> € </h2>
 					<p><a href="#" class="snipcart-add-item btn btn-default"
-							data-item-id="5"
+							data-item-id="<?php echo $row['ID']; ?>"
 							data-item-name="<?php echo $row['Nimi']; ?>"
 							data-item-price="<?php echo $row['Hinta']; ?>"
 							data-item-url="<?php echo $row['SivuUrl']; ?>"
