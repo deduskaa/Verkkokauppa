@@ -127,7 +127,7 @@ require_once('../yhteiset/dbYhteys.php');
       <div class="container">
     </div>
 	<?php 
-		$sql = "SELECT
+		$sql = "SELECT 
 			Pokemon.ID,
 			Pokemon.Nimi,
 			Sukupuoli.Sukupuoli,
@@ -147,7 +147,7 @@ require_once('../yhteiset/dbYhteys.php');
 		WHERE
 			Hinta.ID = Pokemon.Hinta AND
 			Sukupuoli.ID = Pokemon.Sukupuoli AND
-			Pokemon.Nimi = \"Charmander\" AND
+			Pokemon.Nimi = \"Abra\" AND
 			Kuva.ID = PokemonKuva.KuvaID AND
 			PokemonKuva.PokemonID = Pokemon.ID AND
 			Pokemon.ID=PokemonTyyppi.PokemonID AND
@@ -172,7 +172,7 @@ require_once('../yhteiset/dbYhteys.php');
 					<h3><?php echo $row['Nimi']; ?></h3>
 					<p><?php echo $row['Kuvaus']; ?></p>
 					<h2>Type1: <?php echo $row['Tyyppi']; ?></h2>
-					<h2>Type2: <?php echo $row['Tyyppi2']; ?></h2>
+					<h2>Type2: <?php echo $row['Tyyppi']; ?></h2>
 					<h2>Gender: <?php echo $row['Sukupuoli'] ?></h2>
 					<h2>Price: <?php echo $row['Hinta']; ?> € </h2>
 					<p><a href="#" class="snipcart-add-item btn btn-default"
