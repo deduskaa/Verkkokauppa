@@ -151,31 +151,34 @@ $name = $_GET['searchText'];
 
 
 $sql = "SELECT 
+		Tyyppi.Tyyppi,
 		Pokemon.Nimi,
 		Hinta.Hinta,
 		Pokemon.SivuUrl,
-		Tyyppi.Tyyppi,
+		Kuva.URL,
 		Pokemon.Kuvaus,
 		Kuva.URL
-FROM
-		Pokemon,
+		
+	FROM 
+		Pokemon, 
+		Tyyppi, 
 		Hinta,
-		Tyyppi,
-		PokemonTyyppi,
+		PokemonKuva,
 		Kuva,
-		PokemonKuva
-WHERE
-		Hinta.ID = Pokemon.Hinta AND
+		PokemonTyyppi 
+	WHERE 
+		
+		Pokemon.ID=PokemonTyyppi.PokemonID AND
+		Tyyppi.ID=PokemonTyyppi.TyyppiID AND
 		Kuva.ID = PokemonKuva.KuvaID AND
 		PokemonKuva.PokemonID = Pokemon.ID AND
+		Hinta.ID = Pokemon.Hinta AND
 		(Tyyppi.Tyyppi LIKE '%$name%' OR
 		Pokemon.Nimi LIKE '%$name%');";
-		
 		
 	$STH = @$DBH->query($sql);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 	$row = $STH->fetch();
-	
 ?>
 	<div class="page-header">
 		<h1><?php echo "Etsit " . $name ; ?></h1>

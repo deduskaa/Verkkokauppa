@@ -171,7 +171,7 @@ require_once('../yhteiset/dbYhteys.php');
 					<h3><?php echo $row['Nimi']; ?></h3>
 					<p><?php echo $row['Kuvaus']; ?></p>
 					<h2>Type1: <?php echo $row['Tyyppi']; ?></h2>
-					<h2>Type2: <?php echo $row['Tyyppi2']; ?></h2>
+					<h2>Type2: <?php echo $row['Tyyppi']; ?></h2>
 					<h2>Gender: <?php echo $row['Sukupuoli'] ?></h2>
 					<h2>Price: <?php echo $row['Hinta']; ?> € </h2>
 					<p><a href="#" class="snipcart-add-item btn btn-default"
