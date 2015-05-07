@@ -128,10 +128,8 @@ require_once('../yhteiset/dbYhteys.php');
     </div>
 	<?php 
 		$sql = "SELECT 
-<<<<<<< HEAD
+
 			Tyyppi.Tyyppi,
-=======
->>>>>>> origin/master
 			Pokemon.Nimi,
 			Sukupuoli.Sukupuoli,
 			Hinta.Hinta,
