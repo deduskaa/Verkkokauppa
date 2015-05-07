@@ -128,13 +128,13 @@ require_once('../yhteiset/dbYhteys.php');
     </div>
 	<?php 
 		$sql = "SELECT 
+			Tyyppi.Tyyppi,
 			Pokemon.Nimi,
 			Sukupuoli.Sukupuoli,
 			Hinta.Hinta,
 			Pokemon.SivuUrl,
 			Pokemon.Kuvaus,
-			Kuva.URL,
-			Tyyppi.Tyyppi
+			Kuva.URL
 		FROM
 			Pokemon,
 			Tyyppi,
@@ -152,6 +152,8 @@ require_once('../yhteiset/dbYhteys.php');
 			Pokemon.ID=PokemonTyyppi.PokemonID AND
 			Tyyppi.ID=PokemonTyyppi.TyyppiID; ";
 				
+				
+				
 			$STH = @$DBH->query($sql);
 			$STH->setFetchMode(PDO::FETCH_ASSOC);
 			$row = $STH->fetch();
@@ -163,7 +165,7 @@ require_once('../yhteiset/dbYhteys.php');
 		<div class="pokemonCont">
 			<div class="container"> 
 				<div class="col-sm-6 col-md-6">
-					<div class='imageCont'>
+						<div class='imageCont'>
 					  <img src="<?php echo $row['URL']; ?>" alt="kuva">
 					</div>
 				</div>
