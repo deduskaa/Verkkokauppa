@@ -19,218 +19,174 @@ require_once('../yhteiset/dbYhteys.php');
     data-api-key="ZTIyNzAwMTYtOThjZC00NDcxLThlYjYtOGVmNmYzYjIwMTk5"></script>
 	<link id="snipcart-theme" type="text/css" href="https://app.snipcart.com/themes/base/snipcart.css" rel="stylesheet">
   </head>
-  
   <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="../index.php">Pokemondeals</a>
-    </div>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="../index.php">Pokemondeals</a>
+		</div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="../products.php">Products</a></li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" size="50" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-		<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
-		<li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout">Logout</a></li>
-		<?php else: ?>
-		<li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
-		<?php endif;?>
-		<span class="snipcart-summary">
-			Number of items: <span class="snipcart-total-items"></span>
-			Total price: <span class="snipcart-total-price"></span>
-		</span>
-      </ul>
-		<div id="modal" class="popupContainer" style="display:none;">
-			<header class="popupHeader">
-				<span class="header_title">Login</span>
-				<span class="modal_close"><i class="fa fa-times"></i></span>
-			</header>	
-			<section class="popupBody">
-			<!-- Social Login -->
-				<div class="social_login">
-					<div class="">
-						<a href="#" class="social_box fb">
-							<span class="icon"><i class="fa fa-facebook"></i></span>
-							<span class="icon_title">Connect with Facebook</span>
-						</a>
-						<a href="#" class="social_box google">
-							<span class="icon"><i class="fa fa-google-plus"></i></span>
-							<span class="icon_title">Connect with Google</span>
-						</a>
-					</div>
-
-					<div class="centeredText">
-						<span>Or use your Email address</span>
-					</div>
-
-					<div class="action_btns">
-						<div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
-						<div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
-					</div>
-				</div>
-
-			<!-- Username & Password Login form -->
-				<div class="user_login">
-					<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-						<label>Email</label>
-						<input type="text" name="email" /><br />
-						<label>Password</label>
-						<input type="password" name="pwd" /><br />
-						<div class="checkbox">
-							<input id="remember" type="checkbox" />
-							<label for="remember">Remember me on this computer</label>
-						</div>
-						<div class="action_btns">
-							<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-							<div class="one_half last"><input type="submit" name="login" value="Login" class="btn btn_red" /></div>		
-						</div>
-					</form>
-
-					<a href="#" class="forgot_password">Forgot password?</a>
-				</div>
-
-			<!-- Register Form -->
-				<div class="user_register">
-					<form method="POST" action="save.php">
-						<label>Full Name</label>
-						<input type="text" name="fullName" /><br />
-						<label>Email Address</label>
-						<input type="email" name="newEmail"/><br />
-						<label>Password</label>
-						<input type="password" name="newPwd"/><br />
-						<div class="checkbox">
-							<input id="send_updates" type="checkbox" />
-							<label for="send_updates">Send me occasional email updates</label>
-						</div>
-						<div class="action_btns">
-							<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-							<div class="one_half last"><input type="submit" class="btn btn_red" value="Register"></div>
-						</div>
-					</form>
-				</div>
-			</section>
-		</div>	
-		<script type="text/javascript" src="../js/login.js"></script>	  
-    </div>
-  </div>
-
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Pokemondeals</h1>
-        <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
-        <a href="#">Learn More</a>
-      </div>
-    </div>
-    <div class="neighborhood-guides">
-        <div class="container">
-       			</br>
-<?php 
-  
-$sql = "SELECT 
-	Pokemon.Nimi,
-	Sukupuoli.Sukupuoli,
-	Hinta.Hinta,
-	Pokemon.SivuUrl,
-	Pokemon.Kuvaus,
-	Kuva.URL,
-	Tyyppi.Tyyppi
-FROM
-	Pokemon,
-	Tyyppi,
-	PokemonTyyppi,
-	Sukupuoli,
-	Hinta,
-	Kuva,
-	PokemonKuva
-WHERE
-	Hinta.ID = Pokemon.Hinta AND
-	Sukupuoli.ID = Pokemon.Sukupuoli AND
-	Pokemon.Nimi = \"Kakuna\" AND
-	Kuva.ID = PokemonKuva.KuvaID AND
-	PokemonKuva.PokemonID = Pokemon.ID AND
-	Pokemon.ID=PokemonTyyppi.PokemonID AND
-	Tyyppi.ID=PokemonTyyppi.TyyppiID; ";
-		
-	$STH = @$DBH->query($sql);
-	$STH->setFetchMode(PDO::FETCH_ASSOC);
-	$row = $STH->fetch();
- 
- 
-?>
-	<div class="row">
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+			<li><a href="../products.php">Products</a></li>
+		  </ul>
+		  <form class="navbar-form navbar-left" role="search" action="Hakutulos.php">
+			<div class="form-group">
+			  <input type="text" class="form-control" size="100" name="searchText" placeholder="Search by name or type">
 			</div>
-				</div>
-			  </div>
-			   <div class="neighborhood-guides">
+			<button type="submit" name="submit" class="btn btn-default">Submit</button>
+		  </form>
+		  <ul class="nav navbar-nav navbar-right">
+			<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
+				  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
+				  <?php else: ?>
+				  <li><a id="modal_trigger" href="#modal" action="../js/loginpopup.php">Log In</a></li>
+				  <?php endif;?>
+				  <li><a href="#" class="snipcart-checkout">Checkout</a></li>
+				  <li><span class="snipcart-summary">
+				  <p>Number of items: <span class="snipcart-total-items"></span><br />
+				  Total price: <span class="snipcart-total-price"></span></p>
+				  </span></li>	  
+		  </ul>
+		  
+			<div id="modal" class="popupContainer" style="display:none;">
+				<header class="popupHeader">
+					<span class="header_title">Login</span>
+					<span class="modal_close"><i class="fa fa-times"></i></span>
+				</header>	
+				<section class="popupBody">
+				<!-- Social Login -->
+					<div class="social_login">
+						<div class="centeredText">
+							<div class="fb-login-button" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+						</div>
+
+						<div class="centeredText">
+							<span>Or use your Email address</span>
+						</div>
+
+						<div class="action_btns">
+							<div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
+							<div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+						</div>
+					</div>
+
+				<!-- Username & Password Login form -->
+					<div class="user_login">
+						<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+							<label>Email</label>
+							<input type="text" name="email" /><br />
+							<label>Password</label>
+							<input type="password" name="pwd" /><br />
+							<div class="checkbox">
+								<input id="remember" type="checkbox" />
+								<label for="remember">Remember me on this computer</label>
+							</div>
+							<div class="action_btns">
+								<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+								<div class="one_half last"><input type="submit" name="login" value="Login" class="btn btn_red" /></div>		
+							</div>
+						</form>
+
+						<a href="#" class="forgot_password">Forgot password?</a>
+					</div>
+
+				<!-- Register Form -->
+					<div class="user_register">
+						<form method="POST" action="save.php">
+							<label>Full Name</label>
+							<input type="text" name="fullName" /><br />
+							<label>Email Address</label>
+							<input type="email" name="newEmail"/><br />
+							<label>Password</label>
+							<input type="password" name="newPwd"/><br />
+							<div class="checkbox">
+								<input id="send_updates" type="checkbox" />
+								<label for="send_updates">Send me occasional email updates</label>
+							</div>
+							<div class="action_btns">
+								<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+								<div class="one_half last"><input type="submit" class="btn btn_red" value="Register"></div>
+							</div>
+						</form>
+					</div>
+				</section>
+			</div>	
+			<script type="text/javascript" src="js/login.js"></script>	  
+		</div>
+	  </div>
+	</nav>
+      <div class="container">
+    </div>
+	<?php 
+		$sql = "SELECT 
+			Pokemon.Nimi,
+			Sukupuoli.Sukupuoli,
+			Hinta.Hinta,
+			Pokemon.SivuUrl,
+			Pokemon.Kuvaus,
+			Kuva.URL,
+			Tyyppi.Tyyppi
+		FROM
+			Pokemon,
+			Tyyppi,
+			PokemonTyyppi,
+			Sukupuoli,
+			Hinta,
+			Kuva,
+			PokemonKuva
+		WHERE
+			Hinta.ID = Pokemon.Hinta AND
+			Sukupuoli.ID = Pokemon.Sukupuoli AND
+			Pokemon.Nimi = \"Kakuna\" AND
+			Kuva.ID = PokemonKuva.KuvaID AND
+			PokemonKuva.PokemonID = Pokemon.ID AND
+			Pokemon.ID=PokemonTyyppi.PokemonID AND
+			Tyyppi.ID=PokemonTyyppi.TyyppiID; ";
+				
+			$STH = @$DBH->query($sql);
+			$STH->setFetchMode(PDO::FETCH_ASSOC);
+			$row = $STH->fetch();
+	?>
+	<div class="page-header">
+		<h1><?php echo $row['Nimi']; ?></h1>
+	</div>
+	<div class="row">
+		<div class="pokemonCont">
 			<div class="container"> 
-			  <div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-			
-				  <div class="caption">
-					
-										<p>
-					</p>
-				  </div>
+				<div class="col-sm-6 col-md-6">
+					<div class='imageCont'>
+					  <img src="<?php echo $row['URL']; ?>" alt="kuva">
+					</div>
 				</div>
-			  </div>
-			   <div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-				  <img src="<?php echo $row['URL']; ?>" alt="kuva">
-				  <div class="caption">
+			  	<div class="col-sm-6 col-md-6">
 					<h3><?php echo $row['Nimi']; ?></h3>
 					<p><?php echo $row['Kuvaus']; ?></p>
-					
-				  </div>
-				</div>
-			  </div>
-			  			  <div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-				 
-				  <div class="caption">
-					
-					
-					<p>
-							
-							<h2>Tyyppi1: <?php echo $row['Tyyppi']; ?></h2>
-							<h2>Tyyppi2: <?php echo $row['Tyyppi']; ?></h2>
-							<h2>Sukupuoli: <?php echo $row['Sukupuoli'] ?></h2>
-					</p>
-					
-					<h1> <?php echo $row['Hinta']; ?> € </h1>
+					<h2>Type1: <?php echo $row['Tyyppi']; ?></h2>
+					<h2>Type2: <?php echo $row['Tyyppi2']; ?></h2>
+					<h2>Gender: <?php echo $row['Sukupuoli'] ?></h2>
+					<h2>Price: <?php echo $row['Hinta']; ?> € </h2>
 					<p><a href="#" class="snipcart-add-item btn btn-default"
 							data-item-id="5"
 							data-item-name="<?php echo $row['Nimi']; ?>"
 							data-item-price="<?php echo $row['Hinta']; ?>"
 							data-item-url="<?php echo $row['SivuUrl']; ?>"
 							data-item-description="<?php echo $row['Kuvaus']; ?>"
-							role="button">Osta</a>
+							role="button">Add to cart</a>
 					</p>
-				  </div>
 				</div>
-			  </div>
 			</div>
-        </div>
-    </div>
-</div>
-</div>
-
-
+		</div>
+	</div>
+	
     <div class="learn-more">
 	  <div class="container">
 		<div class="row">

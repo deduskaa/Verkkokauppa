@@ -34,6 +34,7 @@ require_once('login.php');
 		  </button>
 		  <a class="navbar-brand" href="index.php">Pokemondeals</a>
 		</div>
+<<<<<<< HEAD
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -150,7 +151,7 @@ FROM
 	
 	
 	?>
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	
 		  <!-- Indicators -->
 		  <ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -162,7 +163,7 @@ FROM
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
 			<div class="item">
-			   <a  height="50" width="50" href="<?php echo $row['SivuUrl'];?>"><img src="<?php echo $row['URL']; ?>" alt="kuva"></img></a>
+			 
 			</div>
 
 			<div class="item active">
@@ -170,6 +171,128 @@ FROM
 			</div>
 		  </div>
 		  
+=======
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+			<li><a href="products.php">Products</a></li>
+		  </ul>
+		  <form class="navbar-form navbar-left" role="search" action="Elukat/Hakutulos.php">
+			<div class="form-group">
+			  <input type="text" class="form-control" size="100" name="searchText" placeholder="Search by name or type">
+			</div>
+			<button type="submit" name="submit" class="btn btn-default">Submit</button>
+		  </form>
+		  <ul class="nav navbar-nav navbar-right">
+			<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
+				  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
+				  <?php else: ?>
+				  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
+				  <?php endif;?>
+				  <li><a href="#" class="snipcart-checkout">Checkout</a></li>
+				  <li><span class="snipcart-summary">
+				  <p>Number of items: <span class="snipcart-total-items"></span><br />
+				  Total price: <span class="snipcart-total-price"></span></p>
+				  </span></li>	  
+		  </ul>
+		  
+			<div id="modal" class="popupContainer" style="display:none;">
+				<header class="popupHeader">
+					<span class="header_title">Login</span>
+					<span class="modal_close"><i class="fa fa-times"></i></span>
+				</header>	
+				<section class="popupBody">
+				<!-- Social Login -->
+					<div class="social_login">
+						<div class="centeredText">
+							<div class="fb-login-button" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+						</div>
+
+						<div class="centeredText">
+							<span>Or use your Email address</span>
+						</div>
+
+						<div class="action_btns">
+							<div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
+							<div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+						</div>
+					</div>
+
+				<!-- Username & Password Login form -->
+					<div class="user_login">
+						<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+							<label>Email</label>
+							<input type="text" name="email" /><br />
+							<label>Password</label>
+							<input type="password" name="pwd" /><br />
+							<div class="checkbox">
+								<input id="remember" type="checkbox" />
+								<label for="remember">Remember me on this computer</label>
+							</div>
+							<div class="action_btns">
+								<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+								<div class="one_half last"><input type="submit" name="login" value="Login" class="btn btn_red" /></div>		
+							</div>
+						</form>
+
+						<a href="#" class="forgot_password">Forgot password?</a>
+					</div>
+
+				<!-- Register Form -->
+					<div class="user_register">
+						<form method="POST" action="save.php">
+							<label>Full Name</label>
+							<input type="text" name="fullName" /><br />
+							<label>Email Address</label>
+							<input type="email" name="newEmail"/><br />
+							<label>Password</label>
+							<input type="password" name="newPwd"/><br />
+							<div class="checkbox">
+								<input id="send_updates" type="checkbox" />
+								<label for="send_updates">Send me occasional email updates</label>
+							</div>
+							<div class="action_btns">
+								<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+								<div class="one_half last"><input type="submit" class="btn btn_red" value="Register"></div>
+							</div>
+						</form>
+					</div>
+				</section>
+			</div>	
+			<script type="text/javascript" src="js/login.js"></script>	  
+		</div>
+	  </div>
+	</nav>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+			<li data-target="#myCarousel" data-slide-to="3"></li>
+		  </ol>
+
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+			<div class="item active">
+			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Chania">
+			</div>
+
+			<div class="item">
+			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Chania">
+			</div>
+
+			<div class="item">
+			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Flower">
+			</div>
+
+			<div class="item">
+			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Flower">
+			</div>
+		  </div>
+
+>>>>>>> origin/master
 		  <!-- Left and right controls -->
 		  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

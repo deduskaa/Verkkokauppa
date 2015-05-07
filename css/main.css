@@ -52,6 +52,17 @@
     background-color: #efefef;
     border-bottom: 1px solid #dbdbdb;
     }
+	
+.pokemonCont {
+    background-color: #efefef;
+    border-bottom: 1px solid #dbdbdb;
+    }
+	
+.imageCont img{
+	padding: 10px;
+	height: 500px;
+	width: 500px;
+}	
     
 .neighborhood-guides h2 {
     color: #393c3d;
@@ -70,4 +81,22 @@
 #frontPagepic{
 	height: 150px;
 	width: 150px;
+}
+
+div .thumbnail img{
+	height: 200px;
+	width: 200px;
+}
+
+div .thumbnail{
+	height: 470px;
+	width: 300px;
+}
+
+.page-header{
+	text-align: center;
+}
+
+.pagination{
+	text-align: center;
 }
