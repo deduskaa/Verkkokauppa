@@ -186,8 +186,36 @@ FROM
 		 
 		  
 
+<<<<<<< HEAD
 		
 		
+=======
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+			<li><a href="products.php">Products</a></li>
+		  </ul>
+		  <form class="navbar-form navbar-left" role="search" action="Elukat/Hakutulos.php">
+			<div class="form-group">
+			  <input type="text" class="form-control" size="100" name="searchText" placeholder="Search by name or type">
+			</div>
+			<button type="submit" name="submit" class="btn btn-default">Submit</button>
+		  </form>
+		  <ul class="nav navbar-nav navbar-right">
+			<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
+				  <li><a href="lol.php">Secret files</a></li>
+				  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
+				  <?php else: ?>
+				  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
+				  <?php endif;?>
+				  <li><a href="#" class="snipcart-checkout">Checkout</a></li>
+				  <li><span class="snipcart-summary">
+				  <p>Number of items: <span class="snipcart-total-items"></span><br />
+				  Total price: <span class="snipcart-total-price"></span></p>
+				  </span></li>	  
+		  </ul>
+		  
+>>>>>>> origin/master
 			<div id="modal" class="popupContainer" style="display:none;">
 				<header class="popupHeader">
 					<span class="header_title">Login</span>
@@ -290,7 +318,7 @@ FROM
 		<div class="container">
 			<div class="row">
 				<div class='col-md-4'>
-					<h1>Admin</h1>
+					<h1>Trololol</h1>
 					<p>You don't have any rights</p>
 				</div>
 			</div>

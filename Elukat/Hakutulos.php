@@ -150,35 +150,32 @@ require_once('../yhteiset/dbYhteys.php');
 $name = $_GET['searchText'];
 
 
-$sql = "SELECT
-			Pokemon.Nimi,
-			Hinta.Hinta,
-			Pokemon.SivuUrl,
-			Pokemon.Kuvaus,
-			Kuva.URL,
-			Tyyppi.Tyyppi
-
-	FROM 
-			Pokemon,
-			Tyyppi,
-			PokemonTyyppi,
-			Sukupuoli,
-			Hinta,
-			Kuva,
-			PokemonKuva
-	WHERE 
-		Pokemon.ID=PokemonTyyppi.PokemonID AND
-		Tyyppi.ID=PokemonTyyppi.TyyppiID AND
-		PokemonKuva.PokemonID = Pokemon.ID AND
+$sql = "SELECT 
+		Pokemon.Nimi,
+		Hinta.Hinta,
+		Pokemon.SivuUrl,
+		Tyyppi.Tyyppi,
+		Pokemon.Kuvaus,
+		Kuva.URL
+FROM
+		Pokemon,
+		Hinta,
+		Tyyppi,
+		PokemonTyyppi,
+		Kuva,
+		PokemonKuva
+WHERE
 		Hinta.ID = Pokemon.Hinta AND
+		Kuva.ID = PokemonKuva.KuvaID AND
+		PokemonKuva.PokemonID = Pokemon.ID AND
 		(Tyyppi.Tyyppi LIKE '%$name%' OR
 		Pokemon.Nimi LIKE '%$name%');";
-		
 		
 		
 	$STH = @$DBH->query($sql);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
 	$row = $STH->fetch();
+	
 ?>
 	<div class="page-header">
 		<h1><?php echo "Etsit " . $name ; ?></h1>

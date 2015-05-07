@@ -1,17 +1,14 @@
 <?php 
 require_once('login.php');
-require_once('yhteiset/dbYhteys.php');
-require_once('yhteiset/funktiot.php');
-require_once('yhteiset/dbFunctions.php');
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokemondeals</title>
+    <title>Pokemondeals | Welcome</title>
 	<link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
-	<link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
@@ -20,6 +17,8 @@ require_once('yhteiset/dbFunctions.php');
 	<script type="text/javascript" id="snipcart" src="https://app.snipcart.com/scripts/snipcart.js"
     data-api-key="ZTIyNzAwMTYtOThjZC00NDcxLThlYjYtOGVmNmYzYjIwMTk5"></script>
 	<link id="snipcart-theme" type="text/css" href="https://app.snipcart.com/themes/base/snipcart.css" rel="stylesheet">
+	<script type="text/javascript" id="facebooklogin" src="js/facebooklogin.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   </head>
   
   <body>
@@ -49,6 +48,7 @@ require_once('yhteiset/dbFunctions.php');
 		  </form>
 		  <ul class="nav navbar-nav navbar-right">
 			<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
+				  <li><a href="lol.php">Secret files</a></li>
 				  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
 				  <?php else: ?>
 				  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
@@ -127,115 +127,51 @@ require_once('yhteiset/dbFunctions.php');
 		</div>
 	  </div>
 	</nav>
-
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Pokemondeals</h1>
-        <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
-      </div>
+    <div class="neighborhood-guides">
+        <div class="container">
+			<iframe width="1000" height="500" src="https://www.youtube.com/embed/LbenCTAwyco?rel=0&autoplay=1" frameborder="10" allowfullscreen></iframe>
+        </div>
     </div>
-	<div class="page-header">
-		<h1>The Products</h1>
-	</div>
+	
+	<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
 		<div class="container">
-			<?php 
-				$name = $_GET['searchText'];
-				$sql = "	
-				SELECT
-					Pokemon.ID,
-					Pokemon.Nimi,
-					Hinta.Hinta,
-					Pokemon.SivuUrl,
-					Pokemon.Kuvaus,
-					Kuva.URL
-				FROM
-					Pokemon,
-					Hinta,
-					Kuva,
-					PokemonKuva
-				WHERE
-					Hinta.ID = Pokemon.Hinta AND
-					Kuva.ID = PokemonKuva.KuvaID AND
-					PokemonKuva.PokemonID = Pokemon.ID;";
-							
-			//$STH = @$DBH->query($sql);
-			//$STH->setFetchMode(PDO::FETCH_ASSOC);
-			//$row = $STH->fetch();
-
-
-					//KUVIEN DATA
-					$STH = @$DBH->query($sql);	
-					//$STH->setFetchMode(PDO::FETCH_ASSOC);
-					
-		// while ($row = mysql_fetch_assoc($STH)) {
-		 //   echo $row['Nimi'];
-		  //  echo $row['Hinta'];}
-		  
-				while ($row = $STH->fetch(PDO::FETCH_ASSOC)): 
-		?>
-				<div class="col-sm-6 col-md-3">
-					<div class="thumbnail">
-					  <img src="<?php echo $row['URL']; ?>" alt="<?php echo $row['Nimi']; ?>">
-					  <div class="caption">
-						<h3><a href="<?php echo $row['SivuUrl']; ?>"><?php echo $row['Nimi']; ?></a></h3>
-						<p><?php echo $row['Kuvaus']; ?></p>
-						<p id='hinta'><?php echo $row['Hinta']; ?> € 
-						<a href="#" class="snipcart-add-item btn btn-default btn-sm"
-								data-item-id="<?php echo $row['ID']; ?>"
-								data-item-name="<?php echo $row['Nimi']; ?>r"
-								data-item-price="<?php echo $row['Hinta']; ?>"
-								data-item-weight="20"
-								data-item-url="<?php echo $row['SivuUrl']; € ?>"
-								data-item-description="<?php echo $row['Kuvaus']; € ?>"
-								role="button">Add to cart</a></p>
-					  </div>
-					</div>
+			<div class="row">
+				<div class='col-md-4'>
+					<h1>Trololol</h1>
+					<p>You don't have any rights</p>
 				</div>
-		<?php
-			endwhile;
-		?>
+			</div>
 		</div>
-			<nav>
-			  <ul class="pagination">
-				<li>
-				  <a href="#" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-				  </a>
-				</li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li>
-				  <a href="#" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-				  </a>
-				</li>
-			  </ul>
-			</nav>
-    </div>
+	<?php else: ?>
+		<div class="learn-more">
+		  <div class="container">
+			<div class="row">
+			  <div class="col-md-4">
+				<h3>About Us</h3>
+				<address>
+				  <strong>Pokedealers</strong><br>
+				  123 Poke Ave, Suite 666<br>
+				  Pokeville, CA 12345<br>
+				  <abbr title="Phone">P:</abbr> (123) 456-7890
+				</address>		
+				<p><a href="#">Contact Us</a></p>
+			  </div>
+			  <div class="col-md-4">
+				<h3>Terms & Conditions</h3>
+				<p>You don't have any</p>
+				<p><a href="#">Don't read these</a></p>
+			  </div>
+			  <div class="col-md-4">
+				<h3>Trust and Safety</h3>
+				<p>We will steal all your money</p>
+				<p><a href="#">Why are you still here?</a></p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	<?php endif;?>
+	
 
-    <div class="learn-more">
-	  <div class="container">
-		<div class="row">
-	      <div class="col-md-4">
-			<h3>About Us</h3>
-			<p>POKEMONDIILERS DIILING POKEMON FOR EVERYONE</p>			
-			<p><a href="#">Contact Us</a></p>
-	      </div>
-		  <div class="col-md-4">
-			<h3>Terms & Conditions</h3>
-			<p>You don't have any</p>
-			<p><a href="#">Don't read these</a></p>
-		  </div>
-		  <div class="col-md-4">
-			<h3>Trust and Safety</h3>
-			<p>We will steal all your money</p>
-			<p><a href="#">Why are you still here?</a></p>
-		  </div>
-	    </div>
-	  </div>
-	</div>
+
   </body>
 </html>
