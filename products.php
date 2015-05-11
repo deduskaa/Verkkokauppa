@@ -49,6 +49,7 @@ require_once('yhteiset/dbFunctions.php');
 		  </form>
 		  <ul class="nav navbar-nav navbar-right">
 			<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
+				  <li><a href="lol.php">Secret files</a></li>
 				  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
 				  <?php else: ?>
 				  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
@@ -141,8 +142,7 @@ require_once('yhteiset/dbFunctions.php');
 			<?php 
 				$name = $_GET['searchText'];
 				$sql = "	
-				SELECT
-					Pokemon.ID,
+				SELECT 
 					Pokemon.Nimi,
 					Hinta.Hinta,
 					Pokemon.SivuUrl,
@@ -154,9 +154,9 @@ require_once('yhteiset/dbFunctions.php');
 					Kuva,
 					PokemonKuva
 				WHERE
+					PokemonKuva.PokemonID = Pokemon.ID AND
 					Hinta.ID = Pokemon.Hinta AND
-					Kuva.ID = PokemonKuva.KuvaID AND
-					PokemonKuva.PokemonID = Pokemon.ID;";
+					Kuva.ID = PokemonKuva.KuvaID;";
 							
 			//$STH = @$DBH->query($sql);
 			//$STH->setFetchMode(PDO::FETCH_ASSOC);
@@ -195,25 +195,6 @@ require_once('yhteiset/dbFunctions.php');
 			endwhile;
 		?>
 		</div>
-			<nav>
-			  <ul class="pagination">
-				<li>
-				  <a href="#" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-				  </a>
-				</li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li>
-				  <a href="#" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-				  </a>
-				</li>
-			  </ul>
-			</nav>
     </div>
 
     <div class="learn-more">
