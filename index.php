@@ -127,44 +127,12 @@ require_once('login.php');
 		</div>
 	  </div>
 	</nav>
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		  <!-- Indicators -->
-		  <ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
-			<li data-target="#myCarousel" data-slide-to="3"></li>
-		  </ol>
-
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner" role="listbox">
-			<div class="item active">
-			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Chania">
-			</div>
-
-			<div class="item">
-			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Chania">
-			</div>
-
-			<div class="item">
-			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Flower">
-			</div>
-
-			<div class="item">
-			  <img src="http://www.mashinie.com/wp-content/uploads/2014/06/Play-any-Pokemon-Game-on-Android-Devices-using-this-Trick.jpg" alt="Flower">
-			</div>
-		  </div>
-
-		  <!-- Left and right controls -->
-		  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		  </a>
-		  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		  </a>
-		</div>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Pokemondeals</h1>
+        <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
+      </div>
+    </div>
     <div class="neighborhood-guides">
         <div class="container">
             <h2>Typetypetype</h2>
@@ -187,7 +155,7 @@ require_once('login.php');
                     </div>
                 </div>
                 <div class = "col-md-4">
-                    <div>
+                    <div class ="ditto">
                         <img src="http://i.imgur.com/Ls6gd.jpg">
                     </div>
                 </div>
