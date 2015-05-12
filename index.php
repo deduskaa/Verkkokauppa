@@ -195,14 +195,13 @@ require_once('login.php');
 	  </div>
 	</nav>
 
-=======
     <div class="jumbotron">
       <div class="container">
         <h1>Pokemondeals</h1>
         <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
       </div>
     </div>
->>>>>>> origin/master
+
     <div class="neighborhood-guides">
         <div class="container">
             <h2>Typetypetype</h2>
