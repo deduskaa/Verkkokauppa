@@ -6,9 +6,11 @@ $md5tiiviste = hash('md5', $text);
 
 if ($yhteysNro) {
 	if (mysql_selectdb('jennytr')){
-		$sql_lauseke = 'INSERT into ip_users(name, email, password) values(' .
-		"\"{$_POST['fullName']}\", " .
-		"\"{$_POST['newEmail']}\", " .
+		$sql_lauseke = 'INSERT into Pokemon(ID, Nimi,  Sukupuoli, Hinta) values(' .
+		"\"{$_POST['ID']}\", " .
+		"\"{$_POST['Nimi']}\", " .
+		"\"{$_POST['Sukupuoli']}\", " .
+		"\"{$_POST['Hinta']}\", " .
 		"\"$md5tiiviste\");";
 		mysql_query ($sql_lauseke) or $virhe = "Virhe: " . mysql_errno() . ": " . mysql_error(); 
 	}

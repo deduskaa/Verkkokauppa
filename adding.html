@@ -1,5 +1,7 @@
 <?php 
 require_once('login.php');
+require_once('yhteiset/dbYhteys.php');
+require_once('yhteiset/dbFunctions.php');
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -127,77 +129,7 @@ require_once('login.php');
 	  </div>
 	</nav>
 	
-	<?php 
-  
-$sql = "SELECT 
-Pokemon.Nimi,
-Pokemon.SivuUrl,
-Kuva.URL 
-FROM 
-	Pokemon, 
-    Kuva, 
-    PokemonKuva
- WHERE 
-	Kuva.ID = PokemonKuva.KuvaID   AND
-	(Pokemon.Nimi = \"Bulbasaur\" OR 
-    Pokemon.Nimi = \"Squirtle\" OR
-    Pokemon.Nimi = \"Charmander\") AND
-	PokemonKuva.PokemonID = Pokemon.ID;";
-		
-	$STH = @$DBH->query($sql);
-	$STH->setFetchMode(PDO::FETCH_ASSOC);
-	$row = $STH->fetch();
 	
-
-	?>
-	
-		<div  id="myCarousel" class="carousel slide" data-ride="carousel">
-		  <!-- Indicators -->
-
-		  
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner" role="listbox">
-		  
-		  <?php 
-				$STH = @$DBH->query($sql);
-				
-				while ($row = $STH->fetch(PDO::FETCH_ASSOC)): ?>
-				
-				<div class="item active">
-					<center><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva"></img></center>
-				</div>
-								
-				<div class="item active">
-					<center><a  href="http://static.comicvine.com/uploads/original/11121/111210935/4311023-trollface.large_426.png"><img height="100" width="100" src="http://static.comicvine.com/uploads/original/11121/111210935/4311023-trollface.large_426.png" alt="naama"></img></a></center>
-				</div>
-				<div class="item">
-					<center><img height="100" width="100" src="<?php echo $row['Charmander.URL']; ?>" alt="Kuva"></img></center>
-				</div>
-				<div class="item">
-				  <center><img height="100" width="100" src="<?php echo $row['Bulbasaur.URL']; ?>" alt="Kuva"></img></center>
-				</div>
-				<div class="item">
-				  <center><img height="100" width="100" src="<?php echo $row['Squirtle.URL']; ?>" alt="Kuva"></img></center>
-				</div>		
-				<?php endwhile; ?>
-					
-
-		  </div>
-		   <!-- Left and right controls -->
-		  	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		  </a>
-		  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		  </a>
-		 </div> 
-		 
-		  
-
-		
-		
 			<div id="modal" class="popupContainer" style="display:none;">
 				<header class="popupHeader">
 					<span class="header_title">Login</span>
@@ -271,27 +203,66 @@ FROM
             <h2>Typetypetype</h2>
             <p>THE most popular pokemons that you will want to buy</p>
             <div class="row">
-                <div class = "col-md-4">
+                <div class = "col-md-12">
                     <div>
-                        <img id='frontPagepic' src="https://lh6.googleusercontent.com/-F3XMnJb0YsU/USlbnOls2YI/AAAAAAAADFY/1OVC0IOnvR4/w800-h800/sticker,375x360.png">
-                    </div>
-                      <div>
-                        <img href="#"'  id='frontPagepic' src="http://wordofgame.com/wp-content/uploads/2014/07/pokemon-water-type-symbol-mjz5sgae.png">
-                    </div>
+<<p>hölö</p>
+						
+<?php
+
+	if(!empty($_POST['data'])){
+		
+		$STH = $DBH->->prepare("Insert into Pokemon	VALUES(SET id =:id,
+		Nimi =: Nimi,
+		Sukupuoli =: Sukupuoli,
+		Hinta =: Hinta,
+		SivuUrl =: SivuUrl,
+		Kuvaus =: Kuvaus);")
+		try{	
+			$STH->execute($data);
+			echo 'Lisäys onnistui.';
+		} catch(PDOException $e) {
+			echo "Päivitys virhe.";
+			file_put_contents('../../loki/PDOErrors.txt', $e->getMessage()."\n", FILE_APPEND);
+		}
+	}
+	
+	
+switch($_GET['action']):
+	
+
+	// TODO 2: käytä switch/case lausetta seuraavaan osaan:
+	// jos modify linkkiä on klikattu (eli action-parametri on 'modify')
+	// näytetään alla oleva lomake
+
+	case 'modify':
+	?>
+	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+		
+	  <br>
+	
+			<input type="text" name="ID" value="ID here" /></br>
+				<input type="text" name="Nimi" value="Name here" /> </br>
+					<input type="text" name="Hinta" value="Hintaryhmä here" /></br>
+		<input type="text" name="SivuUrl" value="URL to Pokemon" /></br>
+		<br>
+		<textarea name="kuvaus">description here</textarea>
+		<br>
+	
+		<input type="hidden" name="ID" value=""/>
+		<br>
+		<input type="submit" name="submit" value="save" />
+	</form>
+	<?php
+		break;
+		else: 
+		echo ("haloo");
+	
+	?>
+
+				 </div>
+                     
                 </div>
-                <div class = "col-md-4">
-                    <div>
-                        <img id='frontPagepic' src="http://firetypepokemon.weebly.com/uploads/3/2/0/5/32050987/160983187.png">
-                    </div>
-                      <div>
-                        <img id='frontPagepic' src="http://cdn.playbuzz.com/cdn/4868eddb-fff5-41ba-8482-8436cdccf810/20f6c5af-1281-4327-988d-9b19999100a3.png">
-                    </div>
-                </div>
-                <div class = "col-md-4">
-                    <div>
-                        <img src="http://i.imgur.com/Ls6gd.jpg">
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>
