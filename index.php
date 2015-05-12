@@ -48,6 +48,7 @@ require_once('login.php');
 		  </form>
 		  <ul class="nav navbar-nav navbar-right">
 			<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
+				  <li><a href="lol.php">Secret files</a></li>
 				  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
 				  <?php else: ?>
 				  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
@@ -125,79 +126,7 @@ require_once('login.php');
 			<script type="text/javascript" src="js/login.js"></script>	  
 		</div>
 	  </div>
-	</nav>
-	
-	<?php 
-  
-$sql = "SELECT 
-Pokemon.Nimi,
-Pokemon.SivuUrl,
-Kuva.URL 
-FROM 
-	Pokemon, 
-    Kuva, 
-    PokemonKuva
- WHERE 
-	Kuva.ID = PokemonKuva.KuvaID   AND
-	(Pokemon.Nimi = \"Bulbasaur\" OR 
-    Pokemon.Nimi = \"Squirtle\" OR
-    Pokemon.Nimi = \"Charmander\") AND
-	PokemonKuva.PokemonID = Pokemon.ID;";
-		
-	$STH = @$DBH->query($sql);
-	$STH->setFetchMode(PDO::FETCH_ASSOC);
-	$row = $STH->fetch();
-	
-
-	?>
-	
-		<div  id="myCarousel" class="carousel slide" data-ride="carousel">
-		  <!-- Indicators -->
-
-		  
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner" role="listbox">
-		  
-		  <?php 
-				$STH = @$DBH->query($sql);
-				
-				while ($row = $STH->fetch(PDO::FETCH_ASSOC)): ?>
-				
-				<div class="item active">
-					<center><img height="100" width="100" src="<?php echo $row['URL']; ?>" alt="kuva"></img></center>
-				</div>
-								
-				<div class="item active">
-					<center><a  href="http://static.comicvine.com/uploads/original/11121/111210935/4311023-trollface.large_426.png"><img height="100" width="100" src="http://static.comicvine.com/uploads/original/11121/111210935/4311023-trollface.large_426.png" alt="naama"></img></a></center>
-				</div>
-				<div class="item">
-					<center><img height="100" width="100" src="<?php echo $row['Charmander.URL']; ?>" alt="Kuva"></img></center>
-				</div>
-				<div class="item">
-				  <center><img height="100" width="100" src="<?php echo $row['Bulbasaur.URL']; ?>" alt="Kuva"></img></center>
-				</div>
-				<div class="item">
-				  <center><img height="100" width="100" src="<?php echo $row['Squirtle.URL']; ?>" alt="Kuva"></img></center>
-				</div>		
-				<?php endwhile; ?>
-					
-
-		  </div>
-		   <!-- Left and right controls -->
-		  	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		  </a>
-		  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		  </a>
-		 </div> 
-		 
-		  
-
-		
-		
+	</nav>		
 			<div id="modal" class="popupContainer" style="display:none;">
 				<header class="popupHeader">
 					<span class="header_title">Login</span>
@@ -266,6 +195,14 @@ FROM
 	  </div>
 	</nav>
 
+=======
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Pokemondeals</h1>
+        <p>Welcome to our online store where everything is made from happiness and fairy dust</p>
+      </div>
+    </div>
+>>>>>>> origin/master
     <div class="neighborhood-guides">
         <div class="container">
             <h2>Typetypetype</h2>
@@ -276,7 +213,7 @@ FROM
                         <img id='frontPagepic' src="https://lh6.googleusercontent.com/-F3XMnJb0YsU/USlbnOls2YI/AAAAAAAADFY/1OVC0IOnvR4/w800-h800/sticker,375x360.png">
                     </div>
                       <div>
-                        <img href="#"'  id='frontPagepic' src="http://wordofgame.com/wp-content/uploads/2014/07/pokemon-water-type-symbol-mjz5sgae.png">
+                        <img id='frontPagepic' src="http://wordofgame.com/wp-content/uploads/2014/07/pokemon-water-type-symbol-mjz5sgae.png">
                     </div>
                 </div>
                 <div class = "col-md-4">
@@ -288,7 +225,7 @@ FROM
                     </div>
                 </div>
                 <div class = "col-md-4">
-                    <div>
+                    <div class ="ditto">
                         <img src="http://i.imgur.com/Ls6gd.jpg">
                     </div>
                 </div>
