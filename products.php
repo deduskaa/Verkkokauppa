@@ -143,6 +143,7 @@ require_once('yhteiset/dbFunctions.php');
 				$name = $_GET['searchText'];
 				$sql = "	
 				SELECT 
+					Pokemon.ID
 					Pokemon.Nimi,
 					Hinta.Hinta,
 					Pokemon.SivuUrl,
