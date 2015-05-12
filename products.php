@@ -156,7 +156,10 @@ require_once('yhteiset/dbFunctions.php');
 				WHERE
 					PokemonKuva.PokemonID = Pokemon.ID AND
 					Hinta.ID = Pokemon.Hinta AND
-					Kuva.ID = PokemonKuva.KuvaID;";
+					Kuva.ID = PokemonKuva.KuvaID
+				ORDER BY 
+					Pokemon.ID";
+					
 							
 			//$STH = @$DBH->query($sql);
 			//$STH->setFetchMode(PDO::FETCH_ASSOC);

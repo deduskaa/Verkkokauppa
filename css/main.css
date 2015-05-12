@@ -79,8 +79,9 @@
 }
 
 #frontPagepic{
-	height: 150px;
-	width: 150px;
+	height: 300px;
+	width: 400px;
+	padding: 20px;
 }
 
 div .thumbnail img{

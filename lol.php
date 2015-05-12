@@ -49,7 +49,7 @@ require_once('login.php');
 		  <ul class="nav navbar-nav navbar-right">
 			<?php if ($_SESSION['kirjautunut'] == 'juujuu'): ?>
 				  <li><a href="lol.php">Secret files</a></li>
-				  <li><a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=logout" data-auto-logout-link="true">Logout</a></li>
+				  <li><a href="index.php" data-auto-logout-link="true">Logout</a></li>
 				  <?php else: ?>
 				  <li><a id="modal_trigger" href="#modal" action="loginpopup.php">Log In</a></li>
 				  <?php endif;?>

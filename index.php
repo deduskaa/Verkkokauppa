@@ -204,31 +204,20 @@ require_once('login.php');
 
     <div class="neighborhood-guides">
         <div class="container">
-            <h2>Typetypetype</h2>
-            <p>THE most popular pokemons that you will want to buy</p>
+            <h2>MEhehehe</h2>
+            <p>Look at some funny pictures</p>
             <div class="row">
-                <div class = "col-md-4">
-                    <div>
-                        <img id='frontPagepic' src="https://lh6.googleusercontent.com/-F3XMnJb0YsU/USlbnOls2YI/AAAAAAAADFY/1OVC0IOnvR4/w800-h800/sticker,375x360.png">
-                    </div>
-                      <div>
-                        <img id='frontPagepic' src="http://wordofgame.com/wp-content/uploads/2014/07/pokemon-water-type-symbol-mjz5sgae.png">
-                    </div>
+                <div class="col-md-4">
+                        <img id='frontPagepic' src="http://i273.photobucket.com/albums/jj230/deduskaa/11119673_817271695027089_1540502477_n_zps3srqugpf.jpg">
                 </div>
-                <div class = "col-md-4">
-                    <div>
-                        <img id='frontPagepic' src="http://firetypepokemon.weebly.com/uploads/3/2/0/5/32050987/160983187.png">
-                    </div>
-                      <div>
-                        <img id='frontPagepic' src="http://cdn.playbuzz.com/cdn/4868eddb-fff5-41ba-8482-8436cdccf810/20f6c5af-1281-4327-988d-9b19999100a3.png">
-                    </div>
+                <div class="col-md-4">
+                        <img id='frontPagepic' src="http://cdn.smosh.com/sites/default/files/ftpuploads/bloguploads/1013/pokemon-puns-magikarpet-ride.jpg">
                 </div>
-                <div class = "col-md-4">
-                    <div class ="ditto">
-                        <img src="http://i.imgur.com/Ls6gd.jpg">
-                    </div>
+                <div class="col-md-4">
+                        <img id='frontPagepic' src="http://i.imgur.com/Ls6gd.jpg">
                 </div>
             </div>
+			<p>Bulbasaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ivysaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venusaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmander Lorem ipsum dolor sit amet, consectetur adipis</p>
         </div>
     </div>
 	
